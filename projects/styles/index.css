@@ -51,3 +51,7 @@ body {
 .navbar button:hover, header:hover {
     color: rgb(122, 122, 255)
 }
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+}
