@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header title */
+h1 {
+    font-size: 50px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: black;
+    letter-spacing: -1.5px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+  
+/* Navbar */
+.navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.navbar li {
+    padding: 10px;
+    float: left;
+}
+/* Button Underline Animation */ 
+.navbar a {
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: normal;
+    color: rgb(140, 140, 140);
+    position: relative;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+.navbar a:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(150, 150, 150);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+.navbar a:hover {
+    color: rgb(150, 150, 150);
+}
+.navbar a:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+
+/* About Sublinks */
+.about-sublinks {
+    padding-top: 20px;
+}
+.about-sublinks ul {
+    list-style-type: none;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.about-sublinks li {
+    width: 20%;
+    text-align: center;
+}
+/* Button Underline Animation */ 
+.about-sublinks a {
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgb(42, 42, 42);
+    position: relative;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+.about-sublinks a:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(150, 150, 150);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+.about-sublinks a:hover {
+    color: rgb(150, 150, 150);
+}
+.about-sublinks a:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+/* Picture Slider */
+.picture-slider {
+    margin: auto;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 500px;
+    border:rgb(42, 42, 42) solid 5px;
+}

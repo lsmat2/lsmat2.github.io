@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation and Catering</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+    <h1>CHEF PETER RICHARDSON</h1>
+    <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="">EXPERIENCES</a></li>
+            <li><a href="../about/index.html">ABOUT</a></li>
+
+        </ul>
+    </nav>
+
+    <table class="table-sections">
+        <tr>
+            <td>
+                <h2>Vacation</h2>
+                <p>For clients who like to have their dream vacation become a reality, my name is Chef Peter. I offer the option of traveling with you to bring a personal dining experience wherever in the world your travels may take you. With fresh locally sourced products blended with years of culinary experience touching many different cuisines my experiences over the years will help to change directions in a moment's notice and create a dining experience like no other.</p>
+            </td>
+            <td>
+                <h2>Custom Catering</h2>
+                <p>From intimate gatherings to special celebrations we bring a taste to your table. Let Chef Peter handle all the culinary details, allowing you to relax and enjoy unforgettable gourmet meals tailored to your preferences. From special dietary needs to unique culinary desire's, discover the convince and luxury of having a private chef in your home!</p>
+            </td>
+            <td>
+                <h2>Chef's Experience</h2>
+                <p>Brought to the comfort of your home, this multi-course meal takes you on a journey of not only taste but knowledge, giving you a course by course of what’s going onto your plate with chef led explanations at every corner. Sourcing only the best locally farmed produce and protein that is redly available based on the confirmed menu. Rest assured that your experience will not only be a professional one but an enjoyable one.</p>
+            </td>
+        </tr>
+        <tr>
+            <!-- VACATION -->
+            <td>
+                <!-- <img src="../Images/Vacation/VT1.jpg" alt="Image 1" class="carousel-image1"> -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="../Images/CustomCatering/CT2.jpg" alt="Image 1" class="carousel-image1">
+                        <img src="../Images/Vacation/VS2.jpg" alt="Image 1" class="carousel-image1">
+                        <img src="../Images/Vacation/VS1.jpeg" alt="Image 1" class="carousel-image1">
+                        <img src="../Images/Vacation/VS5.jpeg" alt="Image 1" class="carousel-image1">
+                        <img src="../Images/Vacation/VS4.jpg" alt="Image 1" class="carousel-image1">
+                    </div>
+                    <button class="carousel-button left-arrow" onclick="changeSlide1(-1)">&#10094;</button>
+                    <button class="carousel-button right-arrow" onclick="changeSlide1(1)">&#10095;</button>
+                    <div class="carousel-dots carousel-dots1">
+                        <!-- JavaScript will populate this -->
+                    </div>
+                </div>
+            </td>
+            <!-- CUSTOM CATERING -->
+            <td>
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="../Images/Vacation/VT2.jpg" alt="Image 1" class="carousel-image2">
+                        <img src="../Images/Vacation/VT3.jpg" alt="Image 1" class="carousel-image2">
+                        <img src="../Images/CustomCatering/CT1.jpg" alt="Image 1" class="carousel-image2">
+                    </div>
+                    <button class="carousel-button left-arrow" onclick="changeSlide2(-1)">&#10094;</button>
+                    <button class="carousel-button right-arrow" onclick="changeSlide2(1)">&#10095;</button>
+                    <div class="carousel-dots carousel-dots2">
+
+                    </div>
+                </div>
+            </td>
+            <!-- CHEF'S EXPERIENCE -->
+            <td>
+                <!-- <img src="../Images/ChefsExperience/CT3.jpeg" alt="Image 1" class="carousel-image3"> -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="../Images/ChefsExperience/CS1.jpeg" alt="Image 2" class="carousel-image3">
+                        <img src="../Images/ChefsExperience/CT1.jpg" alt="Image 6" class="carousel-image3">
+                        <img src="../Images/ChefsExperience/CT2.jpeg" alt="Image 7" class="carousel-image3">
+                        <img src="../Images/ChefsExperience/CS2.jpeg" alt="Image 3" class="carousel-image3">
+                        <img src="../Images/ChefsExperience/CS3.jpg" alt="Image 4" class="carousel-image3">
+                    </div>
+                    <button class="carousel-button left-arrow" onclick="changeSlide3(-1)">&#10094;</button>
+                    <button class="carousel-button right-arrow" onclick="changeSlide3(1)">&#10095;</button>
+                    <div class="carousel-dots carousel-dots3">
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script src="index.js"></script>
+</body>
+</html>
