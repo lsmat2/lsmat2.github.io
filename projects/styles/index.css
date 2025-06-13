@@ -73,6 +73,11 @@ body {
     margin-bottom: 2rem;
 }
 
+.experience-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 16px rgba(122, 122, 255, 0.25);
+}
+
 .experience-item h3 {
     margin: 0;
     font-size: 1.3rem;
@@ -94,7 +99,12 @@ body {
     color: #ccc;
     font-weight: 300;
     line-height: 1.6;
+    display:none; /* hide by default */
 }
+.experience-item:hover p {
+    display: block; /* show on hover */
+}
+
 
 
 /* Project Section Styles */
