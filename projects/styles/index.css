@@ -55,3 +55,54 @@ body {
     text-decoration: none;
     color: inherit;
 }
+
+/* Project Section Styles */
+.project h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.project-item {
+    background-color: #181818;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(50, 50, 50, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 16px rgba(122, 122, 255, 0.25);
+}
+
+.project-item h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.project-item span {
+    display: block;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #999;
+    font-style: italic;
+}
+
+.project-item p {
+    margin: 0;
+    color: #ccc;
+    font-weight: 300;
+    line-height: 1.6;
+}
