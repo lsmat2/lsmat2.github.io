@@ -1,0 +1,69 @@
+{
+  "projects": [
+    {
+      "title": "Academic Document Aggregator",
+      "time": "January 2024 - April 2024",
+      "content": "Built a full-stack application with peers to automate the exploration, extraction, and storage of scholarly articles from the UIUC digital library. Designed modular Python scrapers tailored to different scholarly sources, supporting the development of institutionally sourced academic corpora for research and AI training."
+    },
+    {
+      "title": "Adaptive Network Topology & Routing Simulator",
+      "time": "December 2024",
+      "content": "Designed a dynamic network routing simulator in C++ to model link-state, distance-vector, and path-vector routing algorithms. Simulated packet forwarding and real-time topology changes, generating node-specific forwarding tables to replicate real-world network convergence behaviors."
+    },
+    {
+      "title": "Custom HTTP/1.1 Client",
+      "time": "October 2024",
+      "content": "Independently developed a functional HTTP client in C supporting IPv4/IPv6 resolution, raw socket communication, and custom request/response handling. Implemented low-level POSIX system calls to gain hands-on experience with DNS, TCP, and HTTP protocols without relying on external libraries."
+    },
+    {
+      "title": "Full-Stack Marketplace Web Application",
+      "time": "August 2024 - October 2024",
+      "content": "Developing a full stack marketplace web application to connect buyers and sellers through an online platform, featuring user authentication and distinct components for marketplace viewing and posting. Employing Python's Flask library for backend operations with HTML templates and basic styling."
+    },
+    {
+      "title": "Music Genre ML Classifier",
+      "time": "April 2024",
+      "content": "Leveraged machine learning methods to design different models to analyze the efficiency of music genre prediction on a large dataset of geographic, socioeconomic, and linguistic parameters. Models included Bagging & Boosting Decision Trees and K-Nearest Neighbors, with most accurate models predicting test data correctly 60% of the time.Performed data retrieval and pre-processing with a Python script and employed RStudio and specific R libraries to construct ML models then structure a final comprehensive report into HTML format."
+    },
+    {
+      "title": "Cryptocurrency Market Data Feed",
+      "time": "March 2024",
+      "content": "Designed a backend application to provide real-time trade data for cryptocurrency symbols, utilizing WebSocket for API communication, multi-threading for concurrent processes, and heartbeat mechanisms for connection stability."
+    },
+    {
+      "title": "Wikipedia Search Engine",
+      "time": "February 2024 - April 2024",
+      "content": "Developed backend search engine application capable of processing user queries, retrieving and ranking the most relevant documents from a designated collection built by a recursive web scraper utilizing Wikipedia's API. Optimized query processing using text parsing, stop-word removal, and data normalization. Applied TF-IDF and vector space techniques for effective document ranking and retrieval. Implemented hashing techniques during vocabulary formation resulting in a 70% reduction in runtime from previous iterations."
+    },
+    {
+      "title": "Personal Website",
+      "time": "October 2023 - Present",
+      "content": "Developed this personal website to learn HTML, CSS, and JavaScript, as well as to highlight my portfolio of projects and present my personal interests and a bio."
+    },
+    {
+      "title": "Regression Analysis Programs",
+      "time": "September 2023 - December 2023",
+      "content": "Designed analytical solutions for data set analysis and regression modeling in R, supporting functionalities like regression, trend analysis, and outlier detection to validate predictions aligned with American Economic Association reports."
+    },
+    {
+      "title": "Personal Hub Application",
+      "time": "September 2023 - December 2023",
+      "content": "Collaborated on a full stack Angular application offering weather updates, news, task management, messaging, and entertainment features, utilizing public APIs and Bootstrap for user interaction."
+    },
+    {
+      "title": "D&B Hoover Data Scraper",
+      "time": "July 2023",
+      "content": "Developed a Selenium-based Python script for data extraction on D&B Hoovers, with conditional waiting, page verification, and randomized timing for stability across session-based pages."
+    },
+    {
+      "title": "Multidimensional Matrix Program",
+      "time": "January 2022",
+      "content": "Created a C++ program for multidimensional matrix operations, allowing scaling, multiplication, and row reduction to echelon form for linear algebra applications."
+    },
+    {
+      "title": "Android Application",
+      "time": "May 2021",
+      "content": "Designed an interactive map application for UIUC campus using Java, featuring clickable locations with descriptions to aid campus navigation."
+    }
+  ]
+}

@@ -9,11 +9,8 @@ body {
 
 .frame {
     margin: auto;
-    max-width: 47.5rem;
-    padding: 3rem 2.5rem;
-    font-size: 1.1rem;
-    line-height: 34px;
-    letter-spacing: 0.9px;
+    max-width: 1200px;
+    padding: 2rem 1rem;
 }
 
 /* Navbar Styles */
@@ -57,6 +54,18 @@ body {
 }
 
 /* Experience Section Styles */
+.experience-frame {
+    margin: auto;
+    max-width: 47.5rem;
+    padding: 3rem 2.5rem;
+    font-size: 1.1rem;
+    line-height: 34px;
+    letter-spacing: 0.9px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
 .experience h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -141,83 +150,118 @@ body {
 
 
 
-/* Project Section Styles */
-.project h2 {
+/* Projects Section */
+.projects-section {
+    margin-top: 3rem;
+}
+
+.projects-section h2 {
     font-size: 2rem;
-    margin-bottom: 2rem;
     color: #ffffff;
-    border-bottom: 1px solid #444;
+    margin-bottom: 2rem;
     padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
 }
 
-.projects {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 0.5rem;
 }
 
-.project-item {
+.project-card {
     background-color: #181818;
-    padding: 1.5rem 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(50, 50, 50, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease;
     position: relative;
-    z-index: 1;
-    overflow: hidden;
+    height: 300px; /* Fixed height for all cards */
 }
 
-.project-item::before {
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-content {
+    padding: 1.5rem;
+    height: 100%;
+    max-height: 300px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    /* Customize scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(122, 122, 255, 0.3) transparent;
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Webkit scrollbar styles */
+.project-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.project-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.project-content::-webkit-scrollbar-thumb {
+    background-color: rgba(122, 122, 255, 0.3);
+    border-radius: 3px;
+}
+
+.project-content h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.project-content span {
+    display: block;
+    margin: 0.5rem 0 1rem;
+    color: #999;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.project-content p {
+    margin: 0;
+    color: #ccc;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .frame {
+        padding: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .project-content {
+        padding: 1.25rem;
+    }
+
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Simple hover effect */
+.project-card::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, rgba(122, 122, 255, 0.15), transparent 70%);
+    background: linear-gradient(to right, transparent, rgba(122, 122, 255, 0.1));
     opacity: 0;
-    z-index: -1;
-    transform: scale(0.85);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.3s ease;
 }
 
-.project-item:hover::before {
+.project-card:hover::after {
     opacity: 1;
-    transform: scale(1.2);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1.2); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1.2); }
-}
-
-.project-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 16px rgba(122, 122, 255, 0.25);
-}
-
-.project-item h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    color: #ffffff;
-    font-weight: 500;
-}
-
-.project-item span {
-    display: block;
-    margin-top: 0.4rem;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    color: #999;
-    font-style: italic;
-}
-
-.project-item p {
-    margin: 0;
-    color: #ccc;
-    font-weight: 300;
-    line-height: 1.6;
 }
