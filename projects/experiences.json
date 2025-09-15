@@ -4,25 +4,25 @@
             "title": "Founder & Lead Software Engineer - Local Venue Discovery App/Service",
             "time": "January 2024 - Present",
             "location": "Chicago, IL",
-            "description": "Initiated, designed, and currently developing a full-stack mobile/web app connecting users to local bars and restaurants, leveraging React Native, ReactJS, Node.js, and Supabase for cross-platform functionality and real-time data syncing."
+            "description": "Initiated, designed, and currently developing a full-stack mobile/web app connecting users to local bars and restaurants, leveraging React Native, ReactJS, Node.js, and Supabase for cross-platform functionality and real-time data syncing.\n\nLed recruitment, onboarding, and management of a small multidisciplinary team, fostering agile development practices while contributing hands-on to backend API development, frontend UI/UX design, and cloud database architecture.\n\nNegotiated partnerships with data providers and businesses, integrating external APIs and driving product adoption through direct user/client outreach and feature tailoring."
         },
         {
-            "title": "Lead Programming Instructor",
+            "title": "Lead Programming Instructor - Midtown Metro Achievement Center",
             "time": "June 2024 - July 2024",
             "location": "Chicago, IL",
-            "description": "Designed a 2-month curriculum and delivered discussions, demonstrations, and activities to over 60 students on programming topics such as encryption, authentication, and networking."
+            "description": "Designed a 2-month curriculum and delivered discussions, demonstrations, and activities to over 60 students on programming topics such as encryption, authentication, and networking.\n\nShowcased C and Python programs like password-guessing and binary translators. Mentored over 20 student projects, guiding development and managing multiple concurrent project lifecycles."
         },
         {
-            "title": "Course Assistant - Data Structures & Algorithms",
+            "title": "Course Assistant - University of Illinois at Urbana-Champaign",
             "time": "January 2023 - January 2024",
             "location": "Champaign, IL",
-            "description": "Assisted in teaching a large-scale undergraduate course (over 600 students) on data structures and algorithms using Java, conducting weekly discussion sections, office hours, and grading assignments."
+            "description": "Led weekly discussions for 15-20 students on Java concepts including inheritance, encapsulation, and polymorphism. Supported full-stack application final project design.\n\nProvided over 8 hours per week of tutoring and individually mentored new teaching assistants to onboard and maintain instructional quality."
         },
         {
             "title": "Software Engineer Intern - Buzzpay LLC",
             "time": "May 2023 - August 2023",
             "location": "Chicago, IL",
-            "description": "Designed a user interface"
+            "description": "Designed a user interface for chip & PIN card input using C++ and the Arduino IDE. Built backend logic to process input and display outputs via LED display hardware.\n\nRegularly communicated milestones to project managers and incorporated feedback throughout the development cycle for final deliverables."
         }
     ]
 }

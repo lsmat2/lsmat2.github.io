@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function createProjectCard(project) {
-    // Create the card wrapper and content
-    const wrapper = document.createElement('article');
-    wrapper.className = 'project-wrapper';
+    // Create the card and content
+    const project_card = document.createElement('article');
+    project_card.className = 'project-card';
     const content = document.createElement('div');
     content.className = 'project-content';
 
@@ -65,31 +65,31 @@ function createProjectCard(project) {
     content.appendChild(title);
     content.appendChild(time);
     content.appendChild(description);
-    wrapper.appendChild(content);
+    project_card.appendChild(content);
 
-    return wrapper;
+    return project_card;
 }
 
 function createExperienceCard(experience) {
-    // Create the card wrapper and content
-    const wrapper = document.createElement('article');
-    wrapper.className = 'experience-wrapper';
-    const content = document.createElement('div');
-    content.className = 'experience-content';
+    // Create the card and content
+    const experience_card = document.createElement('article');
+    experience_card.className = 'experience-card';
+    const experience_content = document.createElement('div');
+    experience_content.className = 'experience-content';
 
     // Create and populate the title, time, location, and description
     const title = document.createElement('h3');
     title.textContent = experience.title;
     const time_and_location = document.createElement('span');
-    time_and_location.textContent = `${experience.time} | ${experience.location}`;
+    time_and_location.innerHTML = `${experience.time} &nbsp; • &nbsp; ${experience.location}`;
     const description = document.createElement('p');
     description.textContent = experience.description;
 
     // Assemble the element
-    content.appendChild(title);
-    content.appendChild(time_and_location);
-    content.appendChild(description);
-    wrapper.appendChild(content);
+    experience_content.appendChild(title);
+    experience_content.appendChild(time_and_location);
+    experience_content.appendChild(description);
+    experience_card.appendChild(experience_content);
 
-    return wrapper;
+    return experience_card;
 }
