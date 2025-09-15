@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="frame">
+
         <!-- NAV BAR -->
         <div class="navbar">
             <div>
@@ -25,9 +26,13 @@
         </div>
 
         <!-- EXPERIENCES -->
-        <div class="experience-wrapper">
+        <section class="experiences-section">
             <h2>Experience</h2>
-            <div class="experience-item">
+            <div class="experience-grid", id="experienceGrid">
+                <!-- Experiences will be dynamically loaded from experience.json -->
+            </div>
+
+            <!-- <div class="experience-item">
                 <h3>Founder & Lead Software Engineer — Local Venue Discovery App/Service</h3>
                 <span>January 2024 - Present · Chicago, IL</span>
                 <p>Initiated, designed, and currently developing a full-stack mobile/web app connecting users to local bars and restaurants, leveraging React Native, ReactJS, Node.js, and Supabase for cross-platform functionality and real-time data syncing.</p>
@@ -51,7 +56,7 @@
                 <span>May 2023 - August 2023 · Chicago, IL</span>
                 <p>Designed a user interface for chip & PIN card input using C++ and the Arduino IDE. Built backend logic to process input and display outputs via LED display hardware.</p>
                 <p>Regularly communicated milestones to project managers and incorporated feedback throughout the development cycle for final deliverables.</p>
-            </div>
+            </div> -->
         </div>
 
         <!-- PROJECTS -->
@@ -61,6 +66,7 @@
                 <!-- Projects will be dynamically loaded from projects.json -->
             </div>
         </section>
+
         <!-- FOOTER -->
     </div>
     <script src="scripts/projects.js"></script>

@@ -1,27 +1,44 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    // Fetch experience data from JSON file and populate the experience grid
     try {
-        // Fetch projects data from JSON file
-        // console.log('Fetching from:', window.location.href.replace(/[^/]*$/, '') + 'projects.json');
+        const response = await fetch('experiences.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const experienceGrid = document.getElementById('experienceGrid');
+        experienceGrid.innerHTML = '';
+
+        data.experiences.forEach(experience => {
+            const experienceCard = createExperienceCard(experience);
+            experienceGrid.appendChild(experienceCard);
+        });
+    } catch (error) {
+        console.error('Error loading experiences:', error);
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'Unable to load experiences.';
+        document.getElementById('experienceGrid').appendChild(errorMessage);
+    }
+
+    // Fetch projects data from JSON file and populate the projects grid
+    try {
         const response = await fetch('projects.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
 
-        // Get the projects grid container
         const projectsGrid = document.getElementById('projectsGrid');
-        
-        // Clear any existing content
         projectsGrid.innerHTML = '';
 
-        // Create and append project cards
         data.projects.forEach(project => {
             const projectCard = createProjectCard(project);
             projectsGrid.appendChild(projectCard);
         });
     } catch (error) {
         console.error('Error loading projects:', error);
-        // Add a simple error message to the grid
         const errorMessage = document.createElement('div');
         errorMessage.className = 'error-message';
         errorMessage.textContent = 'Unable to load projects.';
@@ -30,30 +47,49 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function createProjectCard(project) {
-    // Create the card elements
-    const article = document.createElement('article');
-    article.className = 'project-card';
-
+    // Create the card wrapper and content
+    const wrapper = document.createElement('article');
+    wrapper.className = 'project-wrapper';
     const content = document.createElement('div');
     content.className = 'project-content';
 
-    // Create and populate the title
+    // Create and populate the title, time, and description
     const title = document.createElement('h3');
     title.textContent = project.title;
-
-    // Create and populate the time span
-    const timeSpan = document.createElement('span');
-    timeSpan.textContent = project.time;
-
-    // Create and populate the description
+    const time = document.createElement('span');
+    time.textContent = project.time;
     const description = document.createElement('p');
-    description.textContent = project.content;
+    description.textContent = project.description;
 
-    // Assemble the card
+    // Assemble the element
     content.appendChild(title);
-    content.appendChild(timeSpan);
+    content.appendChild(time);
     content.appendChild(description);
-    article.appendChild(content);
+    wrapper.appendChild(content);
 
-    return article;
+    return wrapper;
+}
+
+function createExperienceCard(experience) {
+    // Create the card wrapper and content
+    const wrapper = document.createElement('article');
+    wrapper.className = 'experience-wrapper';
+    const content = document.createElement('div');
+    content.className = 'experience-content';
+
+    // Create and populate the title, time, location, and description
+    const title = document.createElement('h3');
+    title.textContent = experience.title;
+    const time_and_location = document.createElement('span');
+    time_and_location.textContent = `${experience.time} | ${experience.location}`;
+    const description = document.createElement('p');
+    description.textContent = experience.description;
+
+    // Assemble the element
+    content.appendChild(title);
+    content.appendChild(time_and_location);
+    content.appendChild(description);
+    wrapper.appendChild(content);
+
+    return wrapper;
 }
