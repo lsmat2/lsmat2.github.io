@@ -1,6 +1,11 @@
 {
     "projects": [
         {
+            "title": "LLM Data Extractor & CLI",
+            "time": "August 2024",
+            "description": "Developed a pipeline to recursively scrape websites and subpages, preprocess and clean raw HTML/text to reduce noise and optimize token usage, and leveraged LLM APIs to structure unstructured data into desired JSON formats. Designed CLI for configurable interaction supporting query, update, and integration workflows, with the option for interactivity or automation. Applied a modular design to maximize reusability, scalability, and maintainability."
+        },
+        {
             "title": "Academic Document Aggregator",
             "time": "January 2024 - April 2024",
             "description": "Built a full-stack application with peers to automate the exploration, extraction, and storage of scholarly articles from the UIUC digital library. Designed modular Python scrapers tailored to different scholarly sources, supporting the development of institutionally sourced academic corpora for research and AI training."
