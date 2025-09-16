@@ -1,5 +1,9 @@
+
 document.addEventListener('DOMContentLoaded', async () => {
-    // Fetch experience data from JSON file and populate the experience grid
+    loadExperiencesAndProjects();
+});
+
+async function loadExperiencesAndProjects() {
     try {
         const response = await fetch('experiences.json');
         if (!response.ok) {
@@ -44,7 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         errorMessage.textContent = 'Unable to load projects.';
         document.getElementById('projectsGrid').appendChild(errorMessage);
     }
-});
+
+}
 
 function createProjectCard(project) {
     // Create the card and content
@@ -77,19 +82,45 @@ function createExperienceCard(experience) {
     const experience_content = document.createElement('div');
     experience_content.className = 'experience-content';
 
-    // Create and populate the title, time, location, and description
+    // Create and populate the title, time and location
     const title = document.createElement('h3');
     title.textContent = experience.title;
     const time_and_location = document.createElement('span');
     time_and_location.innerHTML = `${experience.time} &nbsp; • &nbsp; ${experience.location}`;
-    const description = document.createElement('p');
-    description.textContent = experience.description;
+
+    // Create and populate the description list
+    const descriptions = document.createElement('div');
+    experience.descriptions.forEach(desc => {
+        const listItem = document.createElement('p');
+        listItem.textContent = desc;
+        descriptions.appendChild(listItem);
+    });
 
     // Assemble the element
     experience_content.appendChild(title);
     experience_content.appendChild(time_and_location);
-    experience_content.appendChild(description);
+    experience_content.appendChild(descriptions);
     experience_card.appendChild(experience_content);
+
+    experience_card.addEventListener('click', () => {
+        const wasExpanded = experience_card.classList.contains('expanded');
+        
+        // Smooth collapse of previously expanded card
+        const previouslyExpanded = document.querySelector('.experience-card.expanded');
+        if (previouslyExpanded && previouslyExpanded !== experience_card) {
+            previouslyExpanded.classList.remove('expanded');
+        }
+        
+        // Toggle current card
+        experience_card.classList.toggle('expanded');
+        
+        // Scroll expanded card into view if it's not fully visible
+        if (!wasExpanded) {
+            setTimeout(() => {
+                experience_card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300); // Wait for expansion animation
+        }
+    });
 
     return experience_card;
 }

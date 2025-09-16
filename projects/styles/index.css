@@ -68,34 +68,17 @@ body {
     padding: 1.5rem 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(50, 50, 50, 0.2);
-    margin-bottom: 2rem;
-    cursor: default;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
-.experience-card:active {
-    transform: scale(0.98);
-    background-color: #202030;
-}
-.experience-card::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(122, 122, 255, 0.8);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%, -50%);
-    transform-origin: 50% 50%;
-}
 .experience-card:hover {
-    transform: translateY(-4px);
+    transform: translateX(8px);
+    border-color: rgba(122, 122, 255, 0.3);
     box-shadow: 0 0 16px rgba(122, 122, 255, 0.25);
 }
-
 .experience-card h3 {
     margin: 0;
     color: #ffffff;
@@ -104,18 +87,50 @@ body {
 .experience-card span {
     display: block;
     margin-top: 0.4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 0.95rem;
     color: #999;
     font-style: italic;
 }
+.experience-card .experience-content > div {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.experience-card.expanded .experience-content > div {
+    max-height: 1000px;
+    opacity: 1;
+    margin: 1rem 0 0 0;
+}
 .experience-card p {
-    margin: 0 0 1rem 0;
     color: #ccc;
     font-weight: 300;
     line-height: 1.6;
+    position: relative;
+    padding-left: 1.2em;
+    margin: 0.5rem 0;
 }
-
+.experience-card p::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: rgb(122, 122, 255);
+}
+.experience-card::after {
+    content: '+';
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    color: #666;
+    transition: all 0.3s ease;
+}
+.experience-card.expanded::after {
+    transform: rotate(45deg);
+    color: rgba(122, 122, 255, 0.5);
+}
 
 
 /************* Projects Styles *************/
