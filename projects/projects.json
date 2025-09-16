@@ -23,7 +23,7 @@
         {
             "title": "Music Genre ML Classifier",
             "time": "April 2024",
-            "description": "Leveraged machine learning methods to design different models to analyze the efficiency of music genre prediction on a large dataset of geographic, socioeconomic, and linguistic parameters. Models included Bagging & Boosting Decision Trees and K-Nearest Neighbors, with most accurate models predicting test data correctly 60% of the time.Performed data retrieval and pre-processing with a Python script and employed RStudio and specific R libraries to construct ML models then structure a final comprehensive report into HTML format."
+            "description": "Leveraged machine learning methods to design different models to analyze the efficiency of music genre prediction on a large dataset of geographic, socioeconomic, and linguistic parameters. Models included Bagging & Boosting Decision Trees and K-Nearest Neighbors, with most accurate models predicting test data correctly 60% of the time. Performed data retrieval and pre-processing with a Python script and employed RStudio and specific R libraries to construct ML models then structure a final comprehensive report into HTML format."
         },
         {
             "title": "Cryptocurrency Market Data Feed",
