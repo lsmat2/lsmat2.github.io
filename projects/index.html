@@ -8,7 +8,8 @@
     <meta name="keywords" content="Personal,Website,Portfolio"> <!-- Specifies keywords (comma separated w/ no spaces) to help SEO catalogue the page -->
     <meta name="author" content="Leo Smat">
     <title>Leo's Projects</title> <!-- Defines name of the tab in a browser -->
-    <link rel="stylesheet" href="styles/index.css"/> <!-- Include to css file -->
+    <link rel="stylesheet" href="../styles/global.css"/>
+    <link rel="stylesheet" href="styles/index.css"/>
 </head>
 <body>
     <div class="frame">
@@ -18,10 +19,15 @@
             <div>
                 <a href="/"><header>LEO SMAT</header></a>
             </div>
-            <div class="nav-elements">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-elements" id="nav-elements">
                 <a href="/"><button>About</button></a>
                 <button>Projects</button>
-                <button>Contact</button>
+                <a href="/contact"><button>Contact</button></a>
             </div>
         </div>
 
@@ -43,6 +49,7 @@
 
         <!-- FOOTER -->
     </div>
+    <script src="../scripts/global.js"></script>
     <script src="scripts/projects.js"></script>
 </body>
 </html>
