@@ -25,6 +25,8 @@ body {
     display: flex;
     flex-direction: row;
     color:rgba(181, 181, 181, 0.918);
+    align-items: center;
+    justify-content: space-between;
 }
 .navbar header{
     cursor: pointer;
@@ -32,11 +34,10 @@ body {
     white-space: nowrap;
     letter-spacing: 0.15em;
 }
-.nav-elements { /* All properties needed to align items at end of container */
-    display:inherit; 
-    flex-direction: inherit;
-    justify-content: flex-end;
-    flex: 1 1 0%;
+.nav-elements {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
 }
 .navbar button {
     background-color: inherit;
@@ -56,6 +57,25 @@ body {
     color: rgb(122, 122, 255)
 }
 
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: rgba(181, 181, 181, 0.918);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+.hamburger:hover span {
+    background-color: rgb(122, 122, 255);
+}
+
 /* Profile Section Styles */
 .profile {
     display: flex;
@@ -64,9 +84,12 @@ body {
     font-size: 1.2rem;
     line-height: 2.8rem;
     align-items: center;
-    flex-wrap:nowrap;
-    max-height: 150px;
+    flex-wrap: wrap;
+    justify-content: center;
     margin:0;
+}
+.profile > div:first-child {
+    flex-shrink: 0;
 }
 .profile-img{
     width: 140px;
@@ -79,7 +102,7 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: linear-gradient(to top right, rgb(247, 140, 8), rgb(193, 32, 230)); /* Gradient from bottom-left to top-right */
+    background: linear-gradient(to top right, rgb(247, 140, 8), rgb(193, 32, 230));
     position:absolute;
     z-index:-2;
 }
@@ -96,9 +119,10 @@ body {
 .profile-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-left: 1.5rem;
-    text-align: center;
+    text-align: left;
+    min-width: 0;
 }
 .profile-text {
     font-size: 1.75rem;
@@ -108,14 +132,8 @@ body {
     width:100%;
     max-width: 32ch;
     text-align: left;
-    padding-left:10%;
     margin:0;
     color:#b2b2b2;
-    /* Give text a linear gradient */
-    /* background: linear-gradient(to right, #daf0ff, 
-                    #a0b9ff, #92abff, #baf3ff); 
-    -webkit-text-fill-color: transparent; 
-    -webkit-background-clip: text;  */
 }
 .profile-text a {
     color: white;
@@ -129,22 +147,23 @@ body {
     justify-content: flex-start;
     flex-wrap: wrap;
     margin:0;
-    padding-left:10%;
     width:100%;
 }
 .socials p {
     padding-right: 6%;
     margin:0.2em;
+    display: flex;
     align-items: center;
+    gap: 0.5rem;
 }
 .socials a {
     text-decoration: none;
     color:rgba(181, 181, 181, 0.918);
+    font-size: 1.25rem;
 }
 .socials img {
-    width: 18px;
-    height: 18px;
-    position:relative;
+    width: 20px;
+    height: 20px;
 }
 .instagram:hover{
     color:rgb(215, 125, 215);
@@ -181,4 +200,85 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .frame {
+        padding: 2rem 1.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+    }
+
+    /* Mobile Navigation */
+    .nav-elements {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #101010;
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid #333;
+        z-index: 1000;
+    }
+    
+    .nav-elements.active {
+        display: flex;
+    }
+    
+    .navbar button {
+        margin: 0.5rem 0;
+        text-align: left;
+        padding: 0.5rem;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .navbar {
+        position: relative;
+    }
+
+    /* Mobile Profile Section */
+    .profile {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        gap: 2rem;
+    }
+    
+    .profile-content {
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-text {
+        font-size: 1.4rem;
+        max-width: none;
+        text-align: center;
+    }
+    
+    .socials {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .socials p {
+        padding-right: 1rem;
+    }
+
+    /* Mobile Content */
+    .content-wrapper {
+        font-size: 0.95rem;
+    }
+    
+    .content-wrapper h2 {
+        font-size: 1.5rem;
+    }
 }
