@@ -1,0 +1,33 @@
+/* Contact Page Specific Styles */
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.contact-content h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-info {
+    background-color: #181818;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact-info a {
+    color: rgb(122, 122, 255);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
