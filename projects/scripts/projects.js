@@ -85,8 +85,21 @@ function createExperienceCard(experience) {
     // Create and populate the title, time and location
     const title = document.createElement('h3');
     title.textContent = experience.title;
-    const time_and_location = document.createElement('span');
-    time_and_location.innerHTML = `${experience.time} &nbsp; • &nbsp; ${experience.location}`;
+    
+    // Create a container for time and location on the same line
+    const timeLocationContainer = document.createElement('div');
+    timeLocationContainer.className = 'time-location-container';
+    
+    const time = document.createElement('span');
+    time.textContent = experience.time;
+    time.className = 'experience-time';
+    
+    const location = document.createElement('span');
+    location.textContent = experience.location;
+    location.className = 'experience-location';
+    
+    timeLocationContainer.appendChild(time);
+    timeLocationContainer.appendChild(location);
 
     // Create and populate the description list
     const descriptions = document.createElement('div');
@@ -98,7 +111,7 @@ function createExperienceCard(experience) {
 
     // Assemble the element
     experience_content.appendChild(title);
-    experience_content.appendChild(time_and_location);
+    experience_content.appendChild(timeLocationContainer);
     experience_content.appendChild(descriptions);
     experience_card.appendChild(experience_content);
 

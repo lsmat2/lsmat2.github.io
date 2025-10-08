@@ -1,7 +1,19 @@
 
-/* Projects Page Specific Styles */
+/*
+========================================================================
+PROJECTS PAGE STYLES
+========================================================================
+Page-specific styling for the projects and experience showcase page.
+Includes experience cards with expandable functionality and project
+display cards with professional badge styling.
+========================================================================
+*/
 
-/* Experience Card Styles */
+/* ====================================================================
+   EXPERIENCE CARDS
+   ==================================================================== */
+
+/* Base Experience Card Structure */
 .experience-card {
     background-color: #181818;
     padding: 1.5rem 2rem;
@@ -14,13 +26,78 @@
     overflow: hidden;
 }
 
+.experience-card .experience-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: fit-content;
+}
+
+/* Experience Card Typography */
+.experience-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.experience-card h4 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(122, 122, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 1rem 0;
+    padding: 0.25rem 0.75rem;
+    background: rgba(122, 122, 255, 0.1);
+    border-radius: 0.375rem;
+    border-left: 3px solid rgba(122, 122, 255, 0.6);
+    width: fit-content;
+}
+
+/* Time and Location Display (Always Visible) */
+.experience-card .time-location-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+}
+
+.experience-card .experience-time {
+    /* Professional badge styling for time periods */
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(122, 122, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    background: rgba(122, 122, 255, 0.1);
+    border-radius: 0.375rem;
+    border-left: 3px solid rgba(122, 122, 255, 0.6);
+    width: fit-content;
+}
+
+.experience-card .experience-location {
+    /* Simple italic text for location */
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-style: italic;
+}
+
+/* Experience Card Hover States */
 .experience-card:hover {
     transform: translateX(8px);
     border-color: rgba(122, 122, 255, 0.3);
     box-shadow: 0 0 16px rgba(122, 122, 255, 0.25);
 }
 
-.experience-card .experience-content > div {
+/* Experience Card Expansion Logic */
+.experience-card .experience-content > div:last-child {
+    /* Hide descriptions by default */
     max-height: 0;
     opacity: 0;
     margin: 0;
@@ -28,25 +105,37 @@
     overflow: hidden;
 }
 
-.experience-card.expanded .experience-content > div {
+.experience-card.expanded .experience-content > div:last-child {
+    /* Show descriptions when expanded */
     max-height: 1000px;
     opacity: 1;
     margin: 1rem 0 0 0;
 }
 
+/* Experience Description Bullet Points */
 .experience-card p {
     position: relative;
     padding-left: 1.2em;
-    margin: 0.5rem 0;
+    margin: 0.6rem 0;
+    font-size: 0.925rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.01em;
 }
 
 .experience-card p::before {
+    /* Custom bullet points with brand color */
     content: "•";
     position: absolute;
     left: 0;
-    color: rgb(122, 122, 255);
+    color: rgba(122, 122, 255, 0.8);
+    font-weight: 700;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
+/* Experience Card Expand/Collapse Indicator */
 .experience-card::after {
     content: '+';
     position: absolute;
@@ -62,7 +151,11 @@
     color: rgba(122, 122, 255, 0.5);
 }
 
-/* Project Card Styles */
+/* ====================================================================
+   PROJECT CARDS
+   ==================================================================== */
+
+/* Project Grid Layout */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -70,6 +163,7 @@
     padding: 0.5rem;
 }
 
+/* Base Project Card Structure */
 .project-card {
     background-color: #181818;
     border-radius: 0.75rem;
@@ -94,32 +188,75 @@
     overflow-y: auto;
 }
 
+/* Project Card Typography */
 .project-content h3 {
-    font-size: 1.3rem;
+    /* Project title styling */
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .project-content span {
-    margin: 0.5rem 0 1rem;
-    font-size: 0.9rem;
+    /* Project type badge (e.g., "Web App", "Mobile App") */
+    display: block;
+    margin: 0 0 1.25rem 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(122, 122, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    background: rgba(122, 122, 255, 0.1);
+    border-radius: 0.375rem;
+    border-left: 3px solid rgba(122, 122, 255, 0.6);
+    width: fit-content;
 }
 
 .project-content p {
+    /* Project description text */
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.925rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.01em;
 }
 
-/* Mobile Responsive */
+/* ====================================================================
+   MOBILE RESPONSIVE DESIGN
+   ==================================================================== */
+
 @media (max-width: 768px) {
+    /* Project Grid Mobile Layout */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
 
+    /* Project Card Mobile Adjustments */
     .project-content {
         padding: 1.25rem;
     }
 
     .project-content h3 {
         font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+        font-weight: 700;
+    }
+
+    .project-content span {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-content p {
+        font-size: 0.875rem;
+        font-weight: 400;
     }
 }
