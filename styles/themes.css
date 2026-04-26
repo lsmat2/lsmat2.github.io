@@ -1,0 +1,399 @@
+/*
+========================================================================
+THEME SYSTEM - Dual Theme Support
+========================================================================
+Two distinct visual themes with smooth transitions:
+- Classic: The original dark theme with orange-purple gradient accents
+- Aurora: Deep navy with luminous blue-violet gradient accents
+========================================================================
+*/
+
+/* Import Satoshi font for Aurora theme */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+
+/* ====================================================================
+   THEME VARIABLES
+   ==================================================================== */
+
+/* Classic Theme (Default) - Original Design */
+:root,
+[data-theme="classic"] {
+    /* Background Colors */
+    --bg-primary: #101010;
+    --bg-secondary: #181818;
+    --bg-navbar: #101010;
+    --bg-card: #181818;
+
+    /* Text Colors */
+    --text-primary: #e0e0e0;
+    --text-secondary: #b2b2b2;
+    --text-muted: rgb(151, 151, 151);
+    --text-heading: #ececec;
+    --text-white: #ffffff;
+
+    /* Accent Colors */
+    --accent-primary: rgb(122, 122, 255);
+    --accent-primary-rgb: 122, 122, 255;
+    --accent-hover: rgb(122, 122, 255);
+    --accent-gradient: linear-gradient(to top right, rgb(247, 140, 8), rgb(193, 32, 230));
+
+    /* Link Colors */
+    --link-instagram: rgb(215, 125, 215);
+    --link-linkedin: rgb(102, 140, 255);
+    --link-github: rgb(209, 209, 209);
+
+    /* Profile Circle */
+    --circle-outer-bg: linear-gradient(to top right, rgb(247, 140, 8), rgb(193, 32, 230));
+    --circle-inner-bg: white;
+
+    /* UI Elements */
+    --border-color: #333;
+    --border-section: #444;
+    --shadow-card: rgba(50, 50, 50, 0.2);
+    --shadow-hover: rgba(122, 122, 255, 0.25);
+
+    /* Typography */
+    --font-family: 'Roboto', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Spacing & Sizing */
+    --navbar-text-color: rgba(181, 181, 181, 0.918);
+    --card-radius: 1rem;
+    --badge-radius: 0.375rem;
+
+    /* Status Indicator */
+    --status-dot: transparent;
+    --status-bg: transparent;
+    --status-text: transparent;
+
+    /* Toggle Button */
+    --toggle-bg: rgba(255, 255, 255, 0.1);
+    --toggle-icon: #e0e0e0;
+}
+
+/* Aurora Theme - Modern Navy with Luminous Accents */
+[data-theme="aurora"] {
+    /* Background Colors - Deep navy spectrum */
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #0f1525;
+    --bg-navbar: rgba(10, 14, 26, 0.85);
+    --bg-card: #121929;
+
+    /* Text Colors - Crisp and luminous */
+    --text-primary: #e8eaf0;
+    --text-secondary: #a8b2c7;
+    --text-muted: #7a869e;
+    --text-heading: #ffffff;
+    --text-white: #ffffff;
+
+    /* Accent Colors - Blue to violet spectrum */
+    --accent-primary: #6b8afd;
+    --accent-primary-rgb: 107, 138, 253;
+    --accent-hover: #8aa2ff;
+    --accent-gradient: linear-gradient(135deg, #6b8afd 0%, #a855f7 50%, #ec4899 100%);
+
+    /* Link Colors - Coordinated with theme */
+    --link-instagram: #ec4899;
+    --link-linkedin: #6b8afd;
+    --link-github: #e8eaf0;
+
+    /* Profile Circle - Luminous gradient */
+    --circle-outer-bg: linear-gradient(135deg, #6b8afd 0%, #a855f7 50%, #ec4899 100%);
+    --circle-inner-bg: #0a0e1a;
+
+    /* UI Elements */
+    --border-color: rgba(107, 138, 253, 0.15);
+    --border-section: rgba(107, 138, 253, 0.2);
+    --shadow-card: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(107, 138, 253, 0.3);
+
+    /* Typography - Satoshi for modern feel */
+    --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-weight-light: 400;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Spacing & Sizing */
+    --navbar-text-color: #a8b2c7;
+    --card-radius: 1rem;
+    --badge-radius: 9999px;
+
+    /* Status Indicator - Availability badge */
+    --status-dot: #22c55e;
+    --status-bg: rgba(34, 197, 94, 0.1);
+    --status-text: #22c55e;
+
+    /* Toggle Button */
+    --toggle-bg: rgba(107, 138, 253, 0.15);
+    --toggle-icon: #6b8afd;
+}
+
+/* ====================================================================
+   THEME TRANSITIONS
+   ==================================================================== */
+
+body,
+.frame,
+.navbar,
+.navbar header,
+.navbar button,
+.nav-elements,
+.hamburger span,
+.profile-text,
+.profile-text a,
+.socials a,
+.content-wrapper,
+.content-wrapper h2,
+.content-wrapper p,
+.contact-content,
+.contact-content h1,
+.contact-info,
+.contact-info p,
+.contact-info a,
+.experience-card,
+.experience-card h3,
+.experience-card h4,
+.experience-card p,
+.experience-card .experience-time,
+.experience-card .experience-location,
+.project-card,
+.project-content,
+.project-content h3,
+.project-content span,
+.project-content p,
+.circle,
+.circle2,
+section h2 {
+    transition:
+        background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================================================================
+   THEME TOGGLE BUTTON
+   ==================================================================== */
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--toggle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background: rgba(var(--accent-primary-rgb), 0.2);
+    border-color: var(--accent-primary);
+    transform: scale(1.05);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--toggle-icon);
+    transition: all 0.3s ease;
+}
+
+/* Icon states */
+.theme-toggle .icon-classic,
+.theme-toggle .icon-aurora {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+[data-theme="classic"] .theme-toggle .icon-classic {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+[data-theme="classic"] .theme-toggle .icon-aurora {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+[data-theme="aurora"] .theme-toggle .icon-classic {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+[data-theme="aurora"] .theme-toggle .icon-aurora {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Mobile positioning */
+@media screen and (max-width: 768px) {
+    .theme-toggle {
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        margin-left: 0;
+    }
+
+    .theme-toggle:hover {
+        transform: translateY(-50%) scale(1.05);
+    }
+}
+
+/* ====================================================================
+   AURORA THEME - SPECIAL ENHANCEMENTS
+   ==================================================================== */
+
+/* Gradient text for Aurora theme */
+[data-theme="aurora"] .profile-text a,
+[data-theme="aurora"] .contact-content h1 {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Status indicator badge - Aurora only */
+.status-badge {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--status-bg);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--status-text);
+    margin-bottom: 1.5rem;
+}
+
+.status-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--status-dot);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+[data-theme="aurora"] .status-badge {
+    display: inline-flex;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+/* Aurora theme - Enhanced card styling */
+[data-theme="aurora"] .experience-card,
+[data-theme="aurora"] .project-card,
+[data-theme="aurora"] .contact-info {
+    background: linear-gradient(
+        135deg,
+        rgba(18, 25, 41, 0.9) 0%,
+        rgba(15, 21, 37, 0.95) 100%
+    );
+    border: 1px solid rgba(107, 138, 253, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="aurora"] .experience-card:hover,
+[data-theme="aurora"] .project-card:hover {
+    border-color: rgba(107, 138, 253, 0.3);
+    box-shadow:
+        0 0 30px rgba(107, 138, 253, 0.15),
+        0 0 60px rgba(168, 85, 247, 0.05);
+}
+
+/* Aurora theme - Badge styling */
+[data-theme="aurora"] .experience-card .experience-time,
+[data-theme="aurora"] .project-content span {
+    background: linear-gradient(135deg, rgba(107, 138, 253, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border: 1px solid rgba(107, 138, 253, 0.2);
+    border-left: none;
+    border-radius: var(--badge-radius);
+    color: #a8b2c7;
+}
+
+/* Aurora theme - Section headings */
+[data-theme="aurora"] section h2,
+[data-theme="aurora"] .content-wrapper h2 {
+    border-bottom-color: var(--border-section);
+    position: relative;
+}
+
+[data-theme="aurora"] section h2::after,
+[data-theme="aurora"] .content-wrapper h2::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-gradient);
+    border-radius: 1px;
+}
+
+/* Aurora theme - Navbar glass effect */
+[data-theme="aurora"] .navbar {
+    background: var(--bg-navbar);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 -1rem;
+    padding: 0 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    [data-theme="aurora"] .navbar {
+        margin: 0 -1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    [data-theme="aurora"] .nav-elements {
+        background: var(--bg-navbar);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+/* Aurora theme - Subtle background texture */
+[data-theme="aurora"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(107, 138, 253, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}

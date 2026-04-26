@@ -2,9 +2,9 @@
 
 /* General Styles */
 body {
-    background-color: #101010;
-    color: #e0e0e0;
-    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-primary, #101010);
+    color: var(--text-primary, #e0e0e0);
+    font-family: var(--font-family, 'Roboto', sans-serif);
     margin: 0;
 }
 
@@ -20,7 +20,7 @@ body {
     padding: 0 1em;
     display: flex;
     flex-direction: row;
-    color: rgba(181, 181, 181, 0.918);
+    color: var(--navbar-text-color, rgba(181, 181, 181, 0.918));
     align-items: center;
     justify-content: space-between;
 }
@@ -54,9 +54,9 @@ body {
     color: inherit;
 }
 
-.navbar button:hover, 
+.navbar button:hover,
 .navbar header:hover {
-    color: rgb(122, 122, 255);
+    color: var(--accent-hover, rgb(122, 122, 255));
 }
 
 /* Hamburger Menu Styles */
@@ -70,14 +70,14 @@ body {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background-color: rgba(181, 181, 181, 0.918);
+    background-color: var(--navbar-text-color, rgba(181, 181, 181, 0.918));
     margin: 3px 0;
     transition: 0.3s;
     border-radius: 2px;
 }
 
 .hamburger:hover span {
-    background-color: rgb(122, 122, 255);
+    background-color: var(--accent-hover, rgb(122, 122, 255));
 }
 
 /* Mobile Responsive Styles */
@@ -93,10 +93,10 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #101010;
+        background-color: var(--bg-primary, #101010);
         flex-direction: column;
         padding: 1rem;
-        border-top: 1px solid #333;
+        border-top: 1px solid var(--border-color, #333);
         z-index: 1000;
     }
     
@@ -122,16 +122,16 @@ body {
 /* Common Section Styles */
 section h2 {
     font-size: 2rem;
-    color: #ffffff;
+    color: var(--text-white, #ffffff);
     margin-bottom: 2rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--border-section, #444);
 }
 
 /* Common Card Base Styles */
 .card {
-    background-color: #181818;
-    border-radius: 1rem;
+    background-color: var(--bg-card, #181818);
+    border-radius: var(--card-radius, 1rem);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -139,19 +139,19 @@ section h2 {
 
 .card h3 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-white, #ffffff);
     font-weight: 500;
 }
 
 .card span {
     display: block;
-    color: #999;
+    color: var(--text-muted, #999);
     font-size: 0.95rem;
     font-style: italic;
 }
 
 .card p {
-    color: #ccc;
-    font-weight: 300;
+    color: var(--text-secondary, #ccc);
+    font-weight: var(--font-weight-light, 300);
     line-height: 1.6;
 }
