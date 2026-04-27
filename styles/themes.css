@@ -243,17 +243,10 @@ section h2 {
 /* Mobile positioning */
 @media screen and (max-width: 768px) {
     .theme-toggle {
-        position: absolute;
-        right: 60px;
-        top: 50%;
-        transform: translateY(-50%);
         width: 36px;
         height: 36px;
         margin-left: 0;
-    }
-
-    .theme-toggle:hover {
-        transform: translateY(-50%) scale(1.05);
+        margin-right: 0.5rem;
     }
 }
 
@@ -361,21 +354,8 @@ section h2 {
     border-radius: 1px;
 }
 
-/* Aurora theme - Navbar glass effect */
-[data-theme="aurora"] .navbar {
-    background: var(--bg-navbar);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-    margin: 0 -1rem;
-    padding: 0 2rem;
-}
-
+/* Aurora theme - Navbar styling */
 @media screen and (max-width: 768px) {
-    [data-theme="aurora"] .navbar {
-        margin: 0 -1.5rem;
-        padding: 0 1.5rem;
-    }
-
     [data-theme="aurora"] .nav-elements {
         background: var(--bg-navbar);
         backdrop-filter: blur(12px);
