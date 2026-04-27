@@ -21,7 +21,7 @@ Two distinct visual themes with smooth transitions:
     /* Background Colors */
     --bg-primary: #101010;
     --bg-secondary: #181818;
-    --bg-navbar: #101010;
+    --bg-navbar: rgba(16, 16, 16, 0.85);
     --bg-card: #181818;
 
     /* Text Colors */
@@ -352,15 +352,6 @@ section h2 {
     height: 2px;
     background: var(--accent-gradient);
     border-radius: 1px;
-}
-
-/* Aurora theme - Navbar styling */
-@media screen and (max-width: 768px) {
-    [data-theme="aurora"] .nav-elements {
-        background: var(--bg-navbar);
-        backdrop-filter: blur(12px);
-        border-top: 1px solid var(--border-color);
-    }
 }
 
 /* Aurora theme - Subtle background texture */

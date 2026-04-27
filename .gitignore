@@ -1,2 +1,5 @@
 # Ignore Mac system files
 .DS_Store
+
+# Local Claude Code context (personal, not for collaborators)
+CLAUDE.md
