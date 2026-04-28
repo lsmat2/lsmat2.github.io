@@ -85,6 +85,13 @@
 }
 
 .socials {
+    /* Use Aurora's link palette in both themes — the brighter values look
+       better against either background than Classic's pastel set. */
+    --navbar-text-color: #a8b2c7;
+    --link-instagram: #ec4899;
+    --link-linkedin: #6b8afd;
+    --link-github: #e8eaf0;
+
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;

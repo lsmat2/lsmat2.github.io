@@ -52,6 +52,18 @@ Two distinct visual themes with smooth transitions:
     --shadow-card: rgba(50, 50, 50, 0.2);
     --shadow-hover: rgba(122, 122, 255, 0.25);
 
+    /* Card Treatment (gradient surface + dual-color hover glow) */
+    --card-gradient-start: rgba(24, 24, 24, 0.9);
+    --card-gradient-end: rgba(16, 16, 16, 0.95);
+    --card-hover-glow: rgba(122, 122, 255, 0.15);
+    --card-hover-ambient: rgba(193, 32, 230, 0.05);
+
+    /* Pill Badge Treatment */
+    --badge-gradient-start: rgba(122, 122, 255, 0.15);
+    --badge-gradient-end: rgba(193, 32, 230, 0.1);
+    --badge-border-color: rgba(122, 122, 255, 0.2);
+    --badge-text-color: #b2b2b2;
+
     /* Typography */
     --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-weight-light: 300;
@@ -62,7 +74,7 @@ Two distinct visual themes with smooth transitions:
     /* Spacing & Sizing */
     --navbar-text-color: rgba(181, 181, 181, 0.918);
     --card-radius: 1rem;
-    --badge-radius: 0.375rem;
+    --badge-radius: 9999px;
 
     /* Status Indicator */
     --status-dot: transparent;
@@ -109,6 +121,18 @@ Two distinct visual themes with smooth transitions:
     --border-section: rgba(107, 138, 253, 0.2);
     --shadow-card: rgba(0, 0, 0, 0.3);
     --shadow-hover: rgba(107, 138, 253, 0.3);
+
+    /* Card Treatment */
+    --card-gradient-start: rgba(18, 25, 41, 0.9);
+    --card-gradient-end: rgba(15, 21, 37, 0.95);
+    --card-hover-glow: rgba(107, 138, 253, 0.15);
+    --card-hover-ambient: rgba(168, 85, 247, 0.05);
+
+    /* Pill Badge Treatment */
+    --badge-gradient-start: rgba(107, 138, 253, 0.15);
+    --badge-gradient-end: rgba(168, 85, 247, 0.1);
+    --badge-border-color: rgba(107, 138, 253, 0.2);
+    --badge-text-color: #a8b2c7;
 
     /* Typography - Satoshi for modern feel */
     --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -304,9 +328,8 @@ section h2 {
     }
 }
 
-/* Aurora theme - Enhanced card styling */
-[data-theme="aurora"] .experience-card,
-[data-theme="aurora"] .project-card,
+/* Aurora theme - Enhanced contact card surface (experience/project cards are
+   now variable-driven in projects/styles/index.css and apply to both themes) */
 [data-theme="aurora"] .contact-info {
     background: linear-gradient(
         135deg,
@@ -315,24 +338,6 @@ section h2 {
     );
     border: 1px solid rgba(107, 138, 253, 0.1);
     backdrop-filter: blur(10px);
-}
-
-[data-theme="aurora"] .experience-card:hover,
-[data-theme="aurora"] .project-card:hover {
-    border-color: rgba(107, 138, 253, 0.3);
-    box-shadow:
-        0 0 30px rgba(107, 138, 253, 0.15),
-        0 0 60px rgba(168, 85, 247, 0.05);
-}
-
-/* Aurora theme - Badge styling */
-[data-theme="aurora"] .experience-card .experience-time,
-[data-theme="aurora"] .project-content span {
-    background: linear-gradient(135deg, rgba(107, 138, 253, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
-    border: 1px solid rgba(107, 138, 253, 0.2);
-    border-left: none;
-    border-radius: var(--badge-radius);
-    color: #a8b2c7;
 }
 
 /* Aurora theme - Section headings */
