@@ -66,7 +66,7 @@ Two distinct visual themes with smooth transitions:
 
     /* Typography */
     --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-weight-light: 300;
+    --font-weight-light: 400;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
@@ -75,11 +75,6 @@ Two distinct visual themes with smooth transitions:
     --navbar-text-color: rgba(181, 181, 181, 0.918);
     --card-radius: 1rem;
     --badge-radius: 9999px;
-
-    /* Status Indicator */
-    --status-dot: transparent;
-    --status-bg: transparent;
-    --status-text: transparent;
 
     /* Toggle Button */
     --toggle-bg: rgba(255, 255, 255, 0.1);
@@ -145,11 +140,6 @@ Two distinct visual themes with smooth transitions:
     --navbar-text-color: #a8b2c7;
     --card-radius: 1rem;
     --badge-radius: 9999px;
-
-    /* Status Indicator - Availability badge */
-    --status-dot: #22c55e;
-    --status-bg: rgba(34, 197, 94, 0.1);
-    --status-text: #22c55e;
 
     /* Toggle Button */
     --toggle-bg: rgba(107, 138, 253, 0.15);
@@ -285,59 +275,6 @@ section h2 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-/* Status indicator badge - Aurora only */
-.status-badge {
-    display: none;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: var(--status-bg);
-    border: 1px solid rgba(34, 197, 94, 0.2);
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--status-text);
-    margin-bottom: 1.5rem;
-}
-
-.status-badge::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: var(--status-dot);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-[data-theme="aurora"] .status-badge {
-    display: inline-flex;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.6;
-        transform: scale(1.1);
-    }
-}
-
-/* Aurora theme - Enhanced contact card surface (experience/project cards are
-   now variable-driven in projects/styles/index.css and apply to both themes) */
-[data-theme="aurora"] .contact-info {
-    background: linear-gradient(
-        135deg,
-        rgba(18, 25, 41, 0.9) 0%,
-        rgba(15, 21, 37, 0.95) 100%
-    );
-    border: 1px solid rgba(107, 138, 253, 0.1);
-    backdrop-filter: blur(10px);
 }
 
 /* Aurora theme - Section headings */
