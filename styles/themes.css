@@ -53,7 +53,7 @@ Two distinct visual themes with smooth transitions:
     --shadow-hover: rgba(122, 122, 255, 0.25);
 
     /* Typography */
-    --font-family: 'Roboto', sans-serif;
+    --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
