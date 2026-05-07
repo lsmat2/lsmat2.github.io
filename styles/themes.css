@@ -1,312 +1,45 @@
-/*
-========================================================================
-THEME SYSTEM - Dual Theme Support
-========================================================================
-Two distinct visual themes with smooth transitions:
-- Classic: The original dark theme with orange-purple gradient accents
-- Aurora: Deep navy with luminous blue-violet gradient accents
-========================================================================
-*/
+/* Typefaces */
+@import url('https://api.fontshare.com/v2/css?f[]=erode@400,500,600,700,400i,500i,600i,700i&f[]=supreme@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* Import Satoshi font for Aurora theme */
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+:root {
+    /* Palette — warm dark editorial */
+    --bg:           #0c0b09;
+    --bg-elev:      #14110d;
+    --bg-glow:      radial-gradient(1100px 600px at 85% -10%, rgba(255, 107, 53, 0.07), transparent 60%);
 
-/* ====================================================================
-   THEME VARIABLES
-   ==================================================================== */
+    --ink:          #efe9dc;
+    --ink-muted:    #948c80;
+    --ink-faint:    #4a443c;
 
-/* Classic Theme (Default) - Original Design */
-:root,
-[data-theme="classic"] {
-    /* Background Colors */
-    --bg-primary: #101010;
-    --bg-secondary: #181818;
-    --bg-navbar: rgba(16, 16, 16, 0.85);
-    --bg-card: #181818;
+    --accent:       #ff6b35;
+    --accent-soft:  rgba(255, 107, 53, 0.14);
+    --accent-line:  rgba(255, 107, 53, 0.42);
 
-    /* Text Colors */
-    --text-primary: #e0e0e0;
-    --text-secondary: #b2b2b2;
-    --text-muted: rgb(151, 151, 151);
-    --text-heading: #ececec;
-    --text-white: #ffffff;
+    --rule:         rgba(239, 233, 220, 0.10);
+    --rule-strong:  rgba(239, 233, 220, 0.22);
 
-    /* Accent Colors */
-    --accent-primary: rgb(122, 122, 255);
-    --accent-primary-rgb: 122, 122, 255;
-    --accent-hover: rgb(122, 122, 255);
-    --accent-gradient: linear-gradient(to top right, rgb(247, 140, 8), rgb(193, 32, 230));
+    /* Typography stacks */
+    --font-display: "Erode", "Iowan Old Style", Georgia, serif;
+    --font-sans:    "Supreme", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-    /* Link Colors */
-    --link-instagram: rgb(215, 125, 215);
-    --link-linkedin: rgb(102, 140, 255);
-    --link-github: rgb(209, 209, 209);
+    /* Type scale (fluid) */
+    --step--2:   clamp(0.66rem, 0.62rem + 0.18vw, 0.74rem);
+    --step--1:   clamp(0.78rem, 0.74rem + 0.2vw,  0.86rem);
+    --step-0:    clamp(0.96rem, 0.9rem  + 0.25vw, 1.06rem);
+    --step-1:    clamp(1.12rem, 1.04rem + 0.4vw,  1.25rem);
+    --step-2:    clamp(1.4rem,  1.2rem  + 1vw,    1.75rem);
+    --step-3:    clamp(2rem,    1.6rem  + 2vw,    3rem);
+    --step-4:    clamp(3.25rem, 2rem    + 6vw,    6rem);
+    --step-hero: clamp(4.25rem, 2.4rem  + 10vw,  11.5rem);
 
-    /* Profile Circle */
-    --circle-outer-bg: linear-gradient(to top right, rgb(247, 140, 8), rgb(193, 32, 230));
-    --circle-inner-bg: white;
+    /* Spacing & layout */
+    --content-max: 1200px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+    --section-gap: clamp(5rem, 10vw, 9rem);
 
-    /* UI Elements */
-    --border-color: #333;
-    --border-section: #444;
-    --shadow-card: rgba(50, 50, 50, 0.2);
-    --shadow-hover: rgba(122, 122, 255, 0.25);
-
-    /* Card Treatment (gradient surface + dual-color hover glow) */
-    --card-gradient-start: rgba(24, 24, 24, 0.9);
-    --card-gradient-end: rgba(16, 16, 16, 0.95);
-    --card-hover-glow: rgba(122, 122, 255, 0.15);
-    --card-hover-ambient: rgba(193, 32, 230, 0.05);
-
-    /* Pill Badge Treatment */
-    --badge-gradient-start: rgba(122, 122, 255, 0.15);
-    --badge-gradient-end: rgba(193, 32, 230, 0.1);
-    --badge-border-color: rgba(122, 122, 255, 0.2);
-    --badge-text-color: #b2b2b2;
-
-    /* Typography */
-    --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-weight-light: 400;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
-
-    /* Spacing & Sizing */
-    --navbar-text-color: rgba(181, 181, 181, 0.918);
-    --card-radius: 1rem;
-    --badge-radius: 9999px;
-
-    /* Toggle Button */
-    --toggle-bg: rgba(255, 255, 255, 0.1);
-    --toggle-icon: #e0e0e0;
-}
-
-/* Aurora Theme - Modern Navy with Luminous Accents */
-[data-theme="aurora"] {
-    /* Background Colors - Deep navy spectrum */
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #0f1525;
-    --bg-navbar: rgba(10, 14, 26, 0.85);
-    --bg-card: #121929;
-
-    /* Text Colors - Crisp and luminous */
-    --text-primary: #e8eaf0;
-    --text-secondary: #a8b2c7;
-    --text-muted: #7a869e;
-    --text-heading: #ffffff;
-    --text-white: #ffffff;
-
-    /* Accent Colors - Blue to violet spectrum */
-    --accent-primary: #6b8afd;
-    --accent-primary-rgb: 107, 138, 253;
-    --accent-hover: #8aa2ff;
-    --accent-gradient: linear-gradient(135deg, #6b8afd 0%, #a855f7 50%, #ec4899 100%);
-
-    /* Link Colors - Coordinated with theme */
-    --link-instagram: #ec4899;
-    --link-linkedin: #6b8afd;
-    --link-github: #e8eaf0;
-
-    /* Profile Circle - Luminous gradient */
-    --circle-outer-bg: linear-gradient(135deg, #6b8afd 0%, #a855f7 50%, #ec4899 100%);
-    --circle-inner-bg: #0a0e1a;
-
-    /* UI Elements */
-    --border-color: rgba(107, 138, 253, 0.15);
-    --border-section: rgba(107, 138, 253, 0.2);
-    --shadow-card: rgba(0, 0, 0, 0.3);
-    --shadow-hover: rgba(107, 138, 253, 0.3);
-
-    /* Card Treatment */
-    --card-gradient-start: rgba(18, 25, 41, 0.9);
-    --card-gradient-end: rgba(15, 21, 37, 0.95);
-    --card-hover-glow: rgba(107, 138, 253, 0.15);
-    --card-hover-ambient: rgba(168, 85, 247, 0.05);
-
-    /* Pill Badge Treatment */
-    --badge-gradient-start: rgba(107, 138, 253, 0.15);
-    --badge-gradient-end: rgba(168, 85, 247, 0.1);
-    --badge-border-color: rgba(107, 138, 253, 0.2);
-    --badge-text-color: #a8b2c7;
-
-    /* Typography - Satoshi for modern feel */
-    --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-weight-light: 400;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
-
-    /* Spacing & Sizing */
-    --navbar-text-color: #a8b2c7;
-    --card-radius: 1rem;
-    --badge-radius: 9999px;
-
-    /* Toggle Button */
-    --toggle-bg: rgba(107, 138, 253, 0.15);
-    --toggle-icon: #6b8afd;
-}
-
-/* ====================================================================
-   THEME TRANSITIONS
-   ==================================================================== */
-
-body,
-.frame,
-.navbar,
-.navbar header,
-.navbar button,
-.nav-elements,
-.hamburger span,
-.profile-text,
-.profile-text a,
-.socials a,
-.content-wrapper,
-.content-wrapper h2,
-.content-wrapper p,
-.contact-content,
-.contact-content h1,
-.contact-info,
-.contact-info p,
-.contact-info a,
-.experience-card,
-.experience-card h3,
-.experience-card h4,
-.experience-card p,
-.experience-card .experience-time,
-.experience-card .experience-location,
-.project-card,
-.project-content,
-.project-content h3,
-.project-content span,
-.project-content p,
-.circle,
-.circle2,
-section h2 {
-    transition:
-        background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ====================================================================
-   THEME TOGGLE BUTTON
-   ==================================================================== */
-
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--toggle-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 1.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.theme-toggle:hover {
-    background: rgba(var(--accent-primary-rgb), 0.2);
-    border-color: var(--accent-primary);
-    transform: scale(1.05);
-}
-
-.theme-toggle:active {
-    transform: scale(0.95);
-}
-
-.theme-toggle svg {
-    width: 20px;
-    height: 20px;
-    color: var(--toggle-icon);
-    transition: all 0.3s ease;
-}
-
-/* Icon states */
-.theme-toggle .icon-classic,
-.theme-toggle .icon-aurora {
-    position: absolute;
-    transition: all 0.3s ease;
-}
-
-[data-theme="classic"] .theme-toggle .icon-classic {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-
-[data-theme="classic"] .theme-toggle .icon-aurora {
-    opacity: 0;
-    transform: rotate(-90deg);
-}
-
-[data-theme="aurora"] .theme-toggle .icon-classic {
-    opacity: 0;
-    transform: rotate(90deg);
-}
-
-[data-theme="aurora"] .theme-toggle .icon-aurora {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-
-/* Mobile positioning */
-@media screen and (max-width: 768px) {
-    .theme-toggle {
-        width: 36px;
-        height: 36px;
-        margin-left: 0;
-        margin-right: 0.5rem;
-    }
-}
-
-/* ====================================================================
-   AURORA THEME - SPECIAL ENHANCEMENTS
-   ==================================================================== */
-
-/* Gradient text for Aurora theme */
-[data-theme="aurora"] .profile-text a,
-[data-theme="aurora"] .contact-content h1 {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Aurora theme - Section headings */
-[data-theme="aurora"] section h2,
-[data-theme="aurora"] .content-wrapper h2 {
-    border-bottom-color: var(--border-section);
-    position: relative;
-}
-
-[data-theme="aurora"] section h2::after,
-[data-theme="aurora"] .content-wrapper h2::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 60px;
-    height: 2px;
-    background: var(--accent-gradient);
-    border-radius: 1px;
-}
-
-/* Aurora theme - Subtle background texture */
-[data-theme="aurora"] body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-        radial-gradient(ellipse at 20% 20%, rgba(107, 138, 253, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
+    /* Motion */
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }

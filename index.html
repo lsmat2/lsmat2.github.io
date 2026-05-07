@@ -1,90 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leo's Personal Website"> <!-- Shows the description of a page when searching it online -->
-    <meta name="keywords" content="Personal,Website,Portfolio"> <!-- Specifies keywords (comma separated w/ no spaces) to help SEO catalogue the page -->
+    <meta name="description" content="Leo Smat — software developer & entrepreneur. Personal site, work, and projects.">
+    <meta name="keywords" content="Leo Smat, Software Engineer, Entrepreneur, Portfolio, Chicago, UIUC">
     <meta name="author" content="Leo Smat">
-    <title>Software Engineer • Leo Smat</title> <!-- Defines name of the tab in a browser -->
+    <meta name="theme-color" content="#0c0b09">
+    <title>Leo Smat — Software Developer & Entrepreneur</title>
     <link rel="stylesheet" href="styles/themes.css"/>
     <link rel="stylesheet" href="styles/global.css"/>
     <link rel="stylesheet" href="styles/index.css"/>
-    <script src="scripts/theme.js"></script>
 </head>
 <body>
-    <!-- NAV BAR -->
-    <div class="navbar">
-        <div>
-            <header>LEO SMAT</header>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="nav-right">
-            <div class="nav-elements" id="nav-elements">
-                <a href="/projects"><button>Experience</button></a>
-                <a href="/contact"><button>Contact</button></a>
-            </div>
-            <button class="theme-toggle" aria-label="Switch theme">
-                <svg class="icon-classic" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-                <svg class="icon-aurora" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-            </button>
-        </div>
-    </div>
+    <div class="grain" aria-hidden="true"></div>
 
-    <div class="frame">
-        <!-- PROFILE IMAGE -->
-        <div class="profile">
-            <div>
-                <div class="circle"></div>
-                <div class="circle2"></div>
-                <img class="profile-img" src="images/Profile.jpg">
-            </div>
-            <div class="profile-content">
-                <p class="profile-text"><a>Hey, I'm Leo.</a> I'm a software developer and entrepreneur.</p>
-                <div class="socials">
-                    <p>
-                        <img src="images/instagram-logo.png">
-                        <a class="instagram" target="_blank" href="https://www.instagram.com/leo_smat_/">Instagram</a>
-                    </p>
-                    <p>
-                        <img src="images/linkedin-logo.png">
-                        <a class="linkedin" target="_blank" href="https://www.linkedin.com/in/leo-smat">LinkedIn</a>
-                    </p>
-                    <p>
-                        <img src="images/github-logo.png">
-                        <a class="github" target="_blank" href="https://github.com/lsmat2">Github</a>
+    <nav class="topnav" aria-label="Primary">
+        <a class="mark" href="#top">Leo Smat</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+        <header id="top" class="hero shell">
+            <div class="hero-grid">
+                <div class="hero-name">
+                    <h1 class="reveal">
+                        Leo<br>
+                        <span class="surname">Smat</span>
+                    </h1>
+                    <p class="role reveal">
+                        Software Developer<span class="amp">&amp;</span>Entrepreneur
                     </p>
                 </div>
-            </div>
-        </div>
 
-        <!-- CONTENT -->
-        <div class="content-wrapper">
-            <!-- ABOUT ME -->
-            <div class="about">
-                <h2>About Me</h2>
-                <p>Hey there! I'm a recent grad from the University of Illinois at Urbana-Champaign with a B.S. in Computer Science and Economics. With hands-on experience in software engineering, machine learning, data modeling, and even leading programming workshops, I thrive on breaking down complex problems to craft unique solutions and derive new insights. Outside of tech, I love playing and watching hockey, traveling and exploring new places, and diving into all kinds of music.</p>
-                <p>Currently, I'm leading development of a local venue discovery app as Founder & Lead Software Engineer, where I'm building a full-stack mobile/web application using React Native, ReactJS, Node.js, and Supabase while managing a small team, negotiating partnerships, and driving product adoption through direct outreach with businesses in Chicago.</p>
-                <p>I've helped design software for multiple startup-esque endeavors and have very much enjoyed the fast-paced, chaotic, environment they entail. I am always willing to learn new tools and bring new ideas to life! Let's connect and build something together!</p>
+                <div class="hero-side reveal">
+                    <img class="portrait" src="images/Profile.jpg" alt="Leo Smat" loading="eager"/>
+                    <ul class="socials">
+                        <li><a href="https://github.com/lsmat2" target="_blank" rel="noopener noreferrer">GitHub <span class="arr">↗</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/leo-smat" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arr">↗</span></a></li>
+                        <li><a href="https://www.instagram.com/leo_smat_/" target="_blank" rel="noopener noreferrer">Instagram <span class="arr">↗</span></a></li>
+                        <li><a href="mailto:leosmat663@gmail.com">Email <span class="arr">↗</span></a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- CONTACT -->
-            <div class="contact">
+            <div class="hero-tagline reveal">
+                <p>
+                    <span class="lead">Hey, I'm Leo</span> — building tools, products, and platforms from <em>idea to deployment</em>. Currently leading development of a local venue discovery app from Chicago.
+                </p>
+            </div>
+        </header>
+
+        <!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+        <section id="about" class="about shell">
+            <div class="section-head reveal">
+                <span class="section-num">§01</span>
+                <h2>About</h2>
+                <span class="section-sub">Background</span>
+            </div>
+
+            <div class="about-body reveal">
+                <p>I'm a recent graduate from the University of Illinois at Urbana-Champaign with a B.S. in Computer Science and Economics. With hands-on experience in software engineering, machine learning, data modeling, and even leading programming workshops, I thrive on breaking down complex problems to craft unique solutions and derive new insights. Outside of tech, I love playing and watching hockey, traveling and exploring new places, and diving into all kinds of music.</p>
+
+                <p>Currently, I'm leading development of a local venue discovery app as Founder &amp; Lead Software Engineer, where I'm building a full-stack mobile/web application using React Native, ReactJS, Node.js, and Supabase while managing a small team, negotiating partnerships, and driving product adoption through direct outreach with businesses in Chicago.</p>
+
+                <p>I've helped design software for multiple startup-esque endeavors and have very much enjoyed the fast-paced, chaotic environment they entail. I am always willing to learn new tools and bring new ideas to life. <em>Let's connect and build something together.</em></p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+        <section id="experience" class="experience shell">
+            <div class="section-head reveal">
+                <span class="section-num">§02</span>
+                <h2>Experience</h2>
+                <span class="section-sub">Recent roles</span>
+            </div>
+
+            <ol class="experience-list" id="experienceList" aria-busy="true">
+                <li class="exp-item is-loading"><span class="mono">Loading…</span></li>
+            </ol>
+        </section>
+
+        <!-- ═══════════════════════════════════ PROJECTS ═════════════════════════════════ -->
+        <section id="projects" class="projects shell">
+            <div class="section-head reveal">
+                <span class="section-num">§03</span>
+                <h2>Projects</h2>
+                <span class="section-sub" id="projectCount">Loading…</span>
+            </div>
+
+            <ol class="projects-list" id="projectsList" aria-busy="true">
+                <li class="proj-item is-loading"><span class="proj-num"></span><span class="proj-title mono">Loading…</span><span class="proj-time"></span></li>
+            </ol>
+        </section>
+
+        <!-- ═══════════════════════════════════ CONTACT ══════════════════════════════════ -->
+        <section id="contact" class="contact shell">
+            <div class="section-head reveal">
+                <span class="section-num">§04</span>
                 <h2>Contact</h2>
-                <p>If you'd like to get in touch, feel free to reach out via <a href="mailto:leosmat663@gmail.com">email</a>.</p>
+                <span class="section-sub">Get in touch</span>
             </div>
-        </div>
-    </div>
-    
+
+            <div class="contact-body reveal">
+                <p class="contact-prompt">Let's build<br><em>something.</em></p>
+
+                <a class="contact-email" href="mailto:leosmat663@gmail.com">
+                    <span>leosmat663@gmail.com</span>
+                    <span class="arr" aria-hidden="true">→</span>
+                </a>
+
+                <ul class="contact-socials">
+                    <li><a href="https://github.com/lsmat2" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.linkedin.com/in/leo-smat" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+                    <li><a href="https://www.instagram.com/leo_smat_/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer shell">
+            <div class="col-l">© <span id="year"></span> Leo Smat</div>
+            <div class="col-c">Set in Erode · Supreme · JetBrains Mono</div>
+            <div class="col-r"><a href="https://github.com/lsmat2/lsmat2.github.io" target="_blank" rel="noopener noreferrer">View source ↗</a></div>
+        </footer>
+    </main>
+
     <script src="scripts/global.js"></script>
     <script src="scripts/index.js"></script>
 </body>
