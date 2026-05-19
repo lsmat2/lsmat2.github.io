@@ -4,7 +4,7 @@ Operational guide for Claude Code working in this repo. Read this before suggest
 
 ## Project type
 
-Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step, no framework, no package.json, no node_modules.** Three pages: `/` (about), `/projects` (experience + projects), `/contact`. Hosted on GitHub Pages at `lsmat2.github.io`.
+Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step, no framework, no package.json, no node_modules.** A single `index.html` at the repo root with anchor-scrolling sections (Hero / About / Experience / Projects / Contact) and a fixed scroll-spy navbar. Hosted on GitHub Pages at `lsmat2.github.io`.
 
 ## Hosting: GitHub Pages — hard constraints
 
@@ -30,33 +30,60 @@ If the user asks for a feature that genuinely requires a backend (e.g., "process
 
 ## Architecture conventions
 
-### No shared layout
+### Single-page structure
 
-Each page has its own `<head>`, `<body>`, and complete navbar markup. There is no template engine. **Every navbar change must be made in all three HTML files** (`index.html`, `projects/index.html`, `contact/index.html`).
+The whole site is one `index.html` at the repo root. Sections (`#about`, `#experience`, `#projects`, `#contact`) are anchor targets in the same document; the navbar links use `#hash` hrefs. There are no other HTML files — don't add `projects/index.html` or `contact/index.html` back. The `projects/` directory exists only as a content store (two JSON files) and is not a route.
 
-### Navbar "current page" pattern
+### Scroll-spy navbar, not active-page classes
 
-The active page's navbar entry is rendered as a bare `<button>` (no `<a>` wrapper). Other-page entries are `<a><button>...</button></a>`. The "LEO SMAT" header logo follows the same rule: bare `<header>` on the homepage, wrapped in `<a href="/">` on `/projects` and `/contact`. The absence of the link is the active-page indicator — don't add a CSS active class.
+The top navbar is sticky and highlights the section currently in view. The active-link logic lives in `scripts/global.js` (`setupScrollSpy`): the last section whose top has crossed a trigger line (35% from the viewport top) wins, and its corresponding `<a>` gets `.is-active` plus `aria-current="location"`. Hero is intentionally unrepresented in the nav, so nothing is active while the hero fills the viewport.
 
-### Theme system
+If you add a new section, give it an `id` and a matching `<a href="#id">` in the navbar — the scroll-spy picks it up automatically.
 
-Two themes: `classic` (default) and `aurora`. Toggled via `data-theme` attribute on `<html>` (see `scripts/theme.js`). All theme differences are expressed as **CSS custom properties** in `styles/themes.css` — theme-scoped selectors should set variables, not actual layout/typography properties.
+### Design tokens, single theme
 
-**Rule of thumb:** if a property would be the same in both themes, put it in `global.css` (or page-specific CSS) using either a hardcoded value or a variable. If it must differ, put a CSS variable in `themes.css` under each `[data-theme="..."]` block.
+There is one visual theme: a warm dark editorial palette. All design tokens (colors, type stacks, fluid type scale, spacing, motion easings) are declared as CSS custom properties in `:root` inside `styles/themes.css`. There is no `[data-theme]` switch, no theme toggle, and no second theme — do not reintroduce one without being asked.
 
-The navbar in particular is **structurally identical across themes** — only colors change via `--navbar-text-color`, `--accent-hover`, `--bg-navbar`, `--border-color`, `--toggle-bg`, `--toggle-icon`. Don't add theme-conditional structural rules to the navbar.
+**Rule of thumb:** if you're adding a color, font size, spacing value, or easing curve and there's already a token for it in `themes.css`, use the token. If you're adding a new design dimension, add the token to `themes.css` first and reference it from `global.css` / `index.css`. Hardcoded hex values and magic numbers in component CSS are a smell.
 
 ### Fonts
 
-- Satoshi is the only typeface used site-wide, imported once in `themes.css` from Fontshare. Both themes set `--font-family` to the Satoshi stack; nothing falls back to Roboto or any other webfont.
-- Satoshi is loaded at weights `400, 500, 700, 900` only. **Don't use `font-weight: 300`, `600`, or `800` with Satoshi** — those would synthesize and look off. If you need a weight outside the imported set, update the `@import` URL in `themes.css`.
-- The `<button>` UA stylesheet does not inherit `font-family` by default. Form controls inside themed regions need `font-family: inherit` explicitly (see `.navbar button`).
+Three webfonts, imported in `styles/themes.css`:
+
+- **Erode** (display serif) — Fontshare, weights 400/500/600/700 with italics. Bound to `--font-display`.
+- **Supreme** (sans) — Fontshare, weights 400/500/600/700. Bound to `--font-sans`.
+- **JetBrains Mono** — Google Fonts, weights 400/500/600. Bound to `--font-mono`.
+
+Only use weights that are actually imported — synthesized weights look off. If you need a weight outside the imported set, update the `@import` URL in `themes.css` first.
 
 ### JSON-driven content
 
-`projects/experiences.json` and `projects/projects.json` are fetched client-side by `projects/scripts/projects.js` and rendered into `#experienceGrid` and `#projectsGrid`. To add/edit content, edit JSON — not HTML.
+`projects/experiences.json` and `projects/projects.json` are fetched client-side by `scripts/index.js` and rendered into `#experienceList` and `#projectsList`. To add or edit work history or projects, edit the JSON — not the HTML.
 
-Because of `fetch()` semantics, the site **must be served over HTTP** during local development (not opened via `file://`). Absolute paths (`/projects`, `/contact`) also require HTTP serving.
+Entry shapes:
+
+```jsonc
+// experiences.json: { "experiences": [ ... ] }
+{
+  "title": "Role - Organization",   // split on " - " into role / org by the renderer
+  "time": "January 2024 - Present", // formatted to "JAN 2024 — PRESENT"
+  "location": "Chicago, IL",
+  "descriptions": ["Bullet one.", "Bullet two."]
+}
+
+// projects.json: { "projects": [ ... ] }
+{
+  "title": "Project name",
+  "time": "May 2025",
+  "description": "Short description."
+}
+```
+
+Because of `fetch()` semantics, the site **must be served over HTTP** during local development (not opened via `file://`). The fetch URLs are absolute (`/projects/experiences.json`), which also requires HTTP serving.
+
+### Reveal-on-scroll
+
+Elements with the `.reveal` class fade/slide in when they enter the viewport. The observer setup lives in `scripts/global.js` (`setupReveals`) for static markup and is repeated in `scripts/index.js` (`upgradeReveals`) for nodes injected after JSON fetch. When you dynamically inject new `.reveal` nodes, call `upgradeReveals(scope)` on the parent so they're observed too — otherwise they stay invisible.
 
 ## Local development
 
@@ -81,6 +108,7 @@ Push to `main`. GitHub Pages auto-builds and serves within a minute or two. Ther
 
 - **Don't add a build step** without explicit user request. The whole site's simplicity depends on no toolchain.
 - **Don't introduce a framework** (React, Vue, Astro, etc.) unless explicitly asked. The vanilla-JS architecture is intentional.
+- **Don't split the page back into multiple HTML files.** The single-page anchor layout is the current design; don't recreate `projects/index.html` or `contact/index.html`.
 - **Don't propose Vercel/Netlify-specific features** while the site is on GitHub Pages. The user has a Vercel account and is considering switching, but until they do, those features don't exist here.
-- **Don't add tracking, analytics, or third-party embeds** without asking — the site is currently dependency-free aside from a Google Fonts equivalent (fontshare).
-- **Don't rename `projects/` to `experience/`** despite the navbar label saying "Experience." The URL is intentionally left as `/projects` to avoid breaking inbound links and the `fetch()` paths in `projects.js`.
+- **Don't add tracking, analytics, or third-party embeds** without asking — the site is currently dependency-free aside from the Fontshare and Google Fonts CSS imports.
+- **Don't rename `projects/`** — the path is hardcoded in `scripts/index.js` as `/projects/experiences.json` and `/projects/projects.json`.
