@@ -1,137 +1,95 @@
-# Leo Smat - Personal Portfolio Website
+# Leo Smat — Personal Portfolio
 
-A clean, responsive personal portfolio website showcasing my professional experience, projects, and contact information. Built with modern web technologies and optimized for both desktop and mobile viewing.
+A single-page personal site showcasing background, experience, and projects. Plain HTML, CSS, and vanilla JavaScript — no framework, no build step, no dependencies installed locally.
 
-## 🌐 Live Site
-Visit the live site at: [lsmat2.github.io](https://lsmat2.github.io)
+## Live site
 
-## 📋 Table of Contents
-- [Purpose & Vision](#purpose--vision)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Technical Implementation](#technical-implementation)
-- [Development](#development)
+[lsmat2.github.io](https://lsmat2.github.io) — auto-deployed by GitHub Pages on every push to `main`.
 
-## 🎯 Purpose & Vision
+## Stack
 
-### Why This Site Exists
-This portfolio website serves as my digital presence and professional showcase, designed with several key objectives:
+- **HTML5 / CSS3 / vanilla JavaScript.** Three CSS files and two JS files, no bundler.
+- **Typography:** Erode (display serif) and Supreme (sans) via Fontshare, JetBrains Mono via Google Fonts.
+- **Content:** Experience and project entries live in JSON files and are fetched and rendered client-side.
+- **Hosting:** GitHub Pages from `main`. No server-side code, no serverless functions, no environment variables.
 
-**Professional Branding**: A centralized platform to present my background, skills, and experience in computer science and entrepreneurship. It provides potential employers, collaborators, and clients with a comprehensive view of my capabilities and achievements.
-
-**Project Documentation**: A curated display of my technical projects, from full-stack applications to startup ventures, demonstrating practical application of my skills and problem-solving abilities.
-
-**Networking & Opportunities**: An accessible way for industry professionals, recruiters, and fellow developers to learn about my work and connect with me for potential opportunities.
-
-### Design Philosophy
-The site embodies a **minimalist, professional aesthetic** with:
-- **Clean Typography**: Easy-to-read content that doesn't overwhelm visitors
-- **Responsive Design**: Seamless experience across all devices and screen sizes
-- **Interactive Elements**: Subtle animations and hover effects that enhance UX without being distracting
-- **Performance-First**: Optimized loading times and efficient code structure
-
-### Target Audience
-- **Potential Employers**: Tech companies and startups looking for software developers
-- **Business Partners**: Individuals interested in collaboration on entrepreneurial ventures
-- **Professional Network**: Fellow developers, industry contacts, and mentors
-- **Clients**: Businesses seeking software development or consulting services
-
-## 📁 Project Structure
+## Project structure
 
 ```
 lsmat2.github.io/
-├── index.html                 # Homepage with profile and about sections
+├── index.html              # Single-page site: hero + About / Experience / Projects / Contact
 ├── styles/
-│   ├── global.css            # Shared styles (navbar, layout, responsive)
-│   └── index.css             # Homepage-specific styles
+│   ├── themes.css          # CSS custom properties — palette, type scale, fonts, spacing, motion
+│   ├── global.css          # Shared layout: navbar, shell container, footer, reveal animation
+│   └── index.css           # Page-specific styles for each section
 ├── scripts/
-│   ├── global.js             # Shared functionality (navigation, mobile menu)
-│   └── index.js              # Homepage-specific JavaScript
-├── images/                   # Profile photo and social media icons
+│   ├── global.js           # Footer year, IntersectionObserver reveals, scroll-spy navbar
+│   └── index.js            # Fetches JSON content and renders the Experience + Projects lists
 ├── projects/
-│   ├── index.html            # Projects and experience showcase
-│   ├── experiences.json      # Dynamic experience data
-│   ├── projects.json         # Dynamic project data
-│   ├── styles/
-│   │   └── index.css         # Projects page styles
-│   └── scripts/
-│       └── projects.js       # Dynamic content loading and interactions
-├── contact/
-│   ├── index.html            # Contact information and links
-│   └── styles/
-│       └── index.css         # Contact page styles
-└── README.md                 # This file
+│   ├── experiences.json    # Work history entries
+│   └── projects.json       # Project entries
+├── images/                 # Profile photo and social icons
+├── CLAUDE.md               # Operational notes for Claude Code working in this repo
+└── README.md
 ```
 
-### Architecture Decisions
+## Page layout
 
-**Modular CSS Architecture**: 
-- `global.css` contains shared styles (navbar, base layout, mobile responsiveness)
-- Page-specific stylesheets only contain unique styling for that page
-- Reduces code duplication and improves maintainability
+A single `index.html` with anchor sections:
 
-**Dynamic Content Loading**:
-- Experience and project data stored in JSON files
-- JavaScript dynamically generates HTML elements
-- Easy to update content without touching HTML structure
+- **Hero** — name, role, portrait, social links, tagline.
+- **§01 About** — short bio.
+- **§02 Experience** — rendered from `projects/experiences.json`.
+- **§03 Projects** — rendered from `projects/projects.json`.
+- **§04 Contact** — email and social links.
 
-**Mobile-First Responsive Design**:
-- Hamburger navigation for mobile devices
-- Flexible layouts that adapt to different screen sizes
-- Touch-friendly interface elements
+The fixed top navbar uses in-page anchor links (`#about`, `#experience`, etc.). A scroll-spy in `scripts/global.js` highlights the active section as the user scrolls.
 
-## ✨ Features
+## Editing content
 
-### Homepage
-- **Hero Section**: Professional photo with gradient styling and introduction
-- **Social Links**: Direct links to LinkedIn, GitHub, and Instagram
-- **About Me**: Comprehensive background covering education, skills, and interests
-- **Contact Section**: Easy access to email communication
+To add or change experience and project entries, edit the JSON files in `projects/` — no HTML changes needed.
 
-### Projects & Experience Page
-- **Interactive Experience Cards**: Expandable cards showing work history with bullet-pointed achievements
-- **Project Showcase**: Grid layout displaying technical projects with descriptions
-- **Smooth Animations**: Hover effects and expansion transitions for better UX
+**`projects/experiences.json`** entries follow the shape:
 
-### Contact Page
-- **Professional Contact Information**: Email and social media links
-- **Consistent Branding**: Maintains design language across all pages
+```json
+{
+  "title": "Role - Organization",
+  "time": "January 2024 - Present",
+  "location": "Chicago, IL",
+  "descriptions": ["Bullet one.", "Bullet two."]
+}
+```
 
-### Universal Features
-- **Responsive Navigation**: Hamburger menu for mobile, traditional navbar for desktop
-- **Cross-Device Compatibility**: Optimized for phones, tablets, and desktops
-- **Fast Loading**: Minimal dependencies and optimized assets
+The renderer in `scripts/index.js` splits `title` on `" - "` into role and organization, and formats `time` into uppercase short-month form (e.g., `JAN 2024 — PRESENT`).
 
-## 🛠 Technical Implementation
+**`projects/projects.json`** entries follow the shape:
 
-### Technologies Used
-- **HTML5**: Semantic markup and accessibility considerations
-- **CSS3**: Flexbox/Grid layouts, animations, and responsive design
-- **Vanilla JavaScript**: Dynamic content loading and interactive features
-- **JSON**: Structured data storage for experiences and projects
+```json
+{
+  "title": "Project name",
+  "time": "May 2025",
+  "description": "Short description."
+}
+```
 
-### Key Technical Features
-- **CSS Custom Properties**: Consistent color scheme and spacing
-- **Intersection Observer API**: Smooth scrolling and view-based animations
-- **ES6+ Features**: Modern JavaScript for clean, maintainable code
-- **Progressive Enhancement**: Works without JavaScript, enhanced with it
+## Styling
 
-### Performance Optimizations
-- **Minimal External Dependencies**: Fast loading times
-- **Optimized Images**: Compressed assets for quick loading
-- **Efficient CSS**: Mobile-first approach reduces unnecessary styles
-- **Clean Code Structure**: Easy to maintain and extend
+All theme tokens (colors, typography, spacing, motion) live as CSS custom properties in `styles/themes.css`. Layout and component rules in `global.css` and `index.css` reference those variables rather than hardcoding values, so a palette or type-scale change in `themes.css` propagates everywhere.
 
-## 🚀 Development
+## Local development
 
-### Making Updates
-- **Content Changes**: Update JSON files in the `projects/` directory
-- **Styling**: Modify global styles in `styles/global.css` or page-specific styles
-- **New Features**: Add JavaScript to appropriate files following the modular structure
+The site uses `fetch()` for content and absolute paths for assets, so it must be served over HTTP rather than opened from `file://`.
 
-### Deployment
-The site is automatically deployed via GitHub Pages when changes are pushed to the main branch.
+```bash
+python3 -m http.server 8000
+```
+
+Run from the repo root, then open `http://localhost:8000`. There is no watch mode — refresh after edits.
+
+## Deployment
+
+Push to `main`. GitHub Pages rebuilds and serves the site within a minute or two. There is no preview environment.
 
 ---
 
-**Built by Leo Smat** | Computer Science & Economics Graduate | Software Developer & Entrepreneur
+Built by Leo Smat — Computer Science & Economics graduate, software developer, and entrepreneur.
