@@ -1,6 +1,17 @@
 {
     "experiences": [
         {
+            "title": "Forward Deployed Engineer - Benmore Technologies",
+            "time": "October 2025 - April 2026",
+            "location": "Chicago, IL",
+            "descriptions": [
+                "Managed 10 concurrent client engagements and a team of 5+ developers across FinTech, Health Tech, Legal Tech, EdTech, Real Estate, and Enterprise SaaS, owning the full product lifecycle from discovery research and system architecture through development coordination and production deployment.",
+                "Designed end-to-end architectures spanning Django, FastAPI, React, Next.js, and React Native (Expo), backed by PostgreSQL, Redis, and cloud infrastructure on DigitalOcean, Heroku, and Railway, delivering systems including AI-powered legal compliance engines, financial forecasting platforms with Plaid integration, and automated maritime data pipelines.",
+                "Integrated third-party services including Stripe, Plaid, Clerk, OpenAI, DocuSign, Tipalti, and Apify, baking HIPAA, COPPA, GDPR, and UPL compliance requirements into the architecture from day one.",
+                "Built a scalable project management framework of scope agreements, deliverable tracking, and AI-augmented documentation that enabled consistent delivery across all engagements simultaneously."
+            ]
+        },
+        {
             "title": "Founder & Lead Software Engineer - Local Venue Discovery App/Service",
             "time": "January 2024 - Present",
             "location": "Chicago, IL",
