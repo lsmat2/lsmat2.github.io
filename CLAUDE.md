@@ -8,7 +8,7 @@ Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step,
 
 **Everything the site serves lives in `public/`** — only that folder is deployed. Repo docs (`CLAUDE.md`, `README.md`, `TODO.md`) and `wrangler.jsonc` stay at the root and are never published.
 
-**Favicon:** `public/favicon.svg`, `public/favicon.ico` and `public/apple-touch-icon.png`, linked from the `<head>` of `public/index.html`. `blinkFavicon` in `scripts/global.js` makes the cursor blink by swapping the SVG icon with `public/favicon-cursor-off.svg` (skipped under reduced motion; Safari doesn't show it). Keep both SVGs identical apart from the cursor. Their design sources and saved alternates live in `brand/favicons/` (not deployed); its README says how to regenerate the files. All site paths below are relative to `public/`.
+**Favicon:** `public/favicon.svg`, `public/favicon.ico` and `public/apple-touch-icon.png`, linked from the `<head>` of `public/index.html`. `blinkFavicon` in `scripts/global.js` makes the cursor blink: it loads `favicon.svg` and `favicon-cursor-off.svg` once as data URLs, removes the page's `rel="icon"` links, and replaces a single icon `<link>` every 530ms (Chrome ignores `href` changes on an existing link). Skipped under reduced motion; Safari doesn't show it. The `.ico` link must stay `sizes="32x32"`, not `any`, or Chrome prefers it over the SVG. Keep both SVGs identical apart from the cursor. Their design sources and saved alternates live in `brand/favicons/` (not deployed); its README says how to regenerate the files. All site paths below are relative to `public/`.
 
 ## Hosting & deployment
 

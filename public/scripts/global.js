@@ -82,22 +82,42 @@
 
 /* ───────────────────────────────────────────────────────────────────
    Blinking cursor in the tab icon
-   Swaps the SVG favicon between cursor-on and cursor-off frames,
-   like a terminal waiting for input. Skipped for reduced motion.
-   Browsers throttle timers in background tabs, so it blinks slower there.
+   Alternates the tab icon between public/favicon.svg and
+   public/favicon-cursor-off.svg, like a terminal waiting for input.
+   Chrome ignores href changes on an existing icon link and may serve a
+   cached file, so each frame is loaded once as a data: URL and a fresh
+   <link> element replaces the old one on every tick.
+   Skipped for reduced motion. Background tabs throttle timers, so it
+   blinks slower there; Safari doesn't show it.
    ─────────────────────────────────────────────────────────────────── */
-(function blinkFavicon() {
+(async function blinkFavicon() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const link = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
-    if (!link) return;
 
-    const ON = '/favicon.svg';
-    const OFF = '/favicon-cursor-off.svg';
-    new Image().src = OFF; // preload so the first blink isn't delayed
+    let frames;
+    try {
+        frames = await Promise.all(['/favicon.svg', '/favicon-cursor-off.svg'].map(async (url) => {
+            const svg = await (await fetch(url)).text();
+            return 'data:image/svg+xml,' + encodeURIComponent(svg);
+        }));
+    } catch {
+        return; // keep the static icon
+    }
 
-    let on = true;
-    setInterval(() => {
-        on = !on;
-        link.href = on ? ON : OFF;
-    }, 530);
+    // One icon link we control; other rel="icon" links would compete with it.
+    document.querySelectorAll('link[rel="icon"]').forEach((el) => el.remove());
+
+    let frame = 0;
+    let current = null;
+    const show = () => {
+        const link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/svg+xml';
+        link.href = frames[frame];
+        if (current) current.replaceWith(link);
+        else document.head.appendChild(link);
+        current = link;
+        frame = 1 - frame;
+    };
+    show();
+    setInterval(show, 530);
 })();
