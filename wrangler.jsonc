@@ -5,5 +5,15 @@
   "compatibility_date": "2026-11-12",
   "assets": {
     "directory": "./public"
-  }
+  },
+  // workers.dev stays on because preview URLs (non-main branches) depend on it.
+  "workers_dev": true,
+  "preview_urls": true,
+  // Custom domains: Cloudflare creates the DNS records and certificates.
+  // www is attached only so it has a DNS record; a Redirect Rule in the
+  // lsmat.com zone (dashboard, not in this repo) sends it to lsmat.com.
+  "routes": [
+    { "pattern": "lsmat.com", "custom_domain": true },
+    { "pattern": "www.lsmat.com", "custom_domain": true }
+  ]
 }
