@@ -92,8 +92,8 @@ Entry shapes:
 }
 ```
 
-- **`"hidden": true`** on any experience or project keeps it in the JSON but skips rendering it (it's also excluded from project numbering and the count). Use it to archive entries instead of deleting them.
-- **Project numbers** (`[01]`, `[02]`, …) and the entry count are generated from array order; array order is display order, newest first.
+- **`"hidden": true`** on any experience or project keeps it in the JSON but skips rendering it (it's also excluded from the project count). Use it to archive entries instead of deleting them.
+- **Array order is display order**, newest first. The project count is generated. Sections and projects are intentionally unnumbered — don't add `§01`/`[01]`-style numbering back.
 - Projects still carry a `time` field for record-keeping; fill it in for new entries even though it isn't shown.
 - Content is condensed from Leo's resumes in `/Users/leo/Code/leo-resumes` (`resume_v3.md` is the newest), but website wording and titles intentionally differ — don't sync blindly.
 

@@ -44,10 +44,10 @@ lsmat2.github.io/
 A single `index.html` with anchor sections:
 
 - **Hero** — name, role, portrait, social links, tagline.
-- **§01 About** — short bio.
-- **§02 Experience** — rendered from `projects/experiences.json`.
-- **§03 Projects** — rendered from `projects/projects.json`.
-- **§04 Contact** — email and social links.
+- **About** — short bio.
+- **Experience** — rendered from `projects/experiences.json`.
+- **Projects** — rendered from `projects/projects.json`.
+- **Contact** — email and social links.
 
 The fixed top navbar uses in-page anchor links (`#about`, `#experience`, etc.). A scroll-spy in `scripts/global.js` highlights the active section as the user scrolls.
 

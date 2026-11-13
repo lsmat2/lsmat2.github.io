@@ -62,12 +62,10 @@ function renderProjects(list) {
     const counter = document.getElementById('projectCount');
     if (!ol) return;
     ol.removeAttribute('aria-busy');
-    ol.innerHTML = list.map((p, i) => {
+    ol.innerHTML = list.map((p) => {
         /* p.time stays in the JSON as metadata but isn't displayed */
-        const num = String(i + 1).padStart(2, '0');
         return `
             <li class="proj-item reveal" tabindex="0">
-                <span class="proj-num">[${num}]</span>
                 <h3 class="proj-title">${escapeHTML(txt(p.title))}</h3>
                 <p class="proj-desc">${escapeHTML(txt(p.description))}</p>
             </li>

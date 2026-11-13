@@ -172,21 +172,12 @@ section[id], header[id] {
 /* Section heading: §0X · TITLE · subtitle */
 .section-head {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     align-items: end;
     gap: clamp(1rem, 3vw, 2rem);
     padding-bottom: 1.75rem;
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
     border-bottom: 1px solid var(--rule);
-}
-
-.section-head .section-num {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    align-self: end;
-    padding-bottom: 0.4rem;
 }
 
 .section-head h2 {
@@ -212,8 +203,7 @@ section[id], header[id] {
 
 @media (max-width: 720px) {
     .section-head {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
     }
     .section-head .section-sub {
         grid-column: 1 / -1;

@@ -4,13 +4,10 @@ In order of priority.
 
 - Leo, outside this repo: update the website link on resumes and LinkedIn to https://lsmat.com.
 
-## 1. Rewrite the About section
-- The hero intro and About copy in `index.html` are hardcoded, not JSON-driven.
-- They still describe leading the local venue discovery app as current work, and don't mention Prime Care Medical Group or Benmore Technologies.
+## 1. Explore a revamp/redesign of the whole site
+- More direction to come from Leo when we get there.
+- Pending decision: the label under the name in the hero (currently "Software Developer & Entrepreneur"; Leo is considering something like "builder and nerd").
 
-## 2. Explore a revamp/redesign of the whole site
-- After the About rewrite. More direction to come from Leo when we get there.
-
-## 3. Professional email signature
+## 2. Professional email signature
 - For the personal email account, including the new website domain.
 - Unblocked: the site is live at https://lsmat.com.
