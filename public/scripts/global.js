@@ -79,3 +79,25 @@
     window.addEventListener('resize', onScroll, { passive: true });
     update();
 })();
+
+/* ───────────────────────────────────────────────────────────────────
+   Blinking cursor in the tab icon
+   Swaps the SVG favicon between cursor-on and cursor-off frames,
+   like a terminal waiting for input. Skipped for reduced motion.
+   Browsers throttle timers in background tabs, so it blinks slower there.
+   ─────────────────────────────────────────────────────────────────── */
+(function blinkFavicon() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const link = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+    if (!link) return;
+
+    const ON = '/favicon.svg';
+    const OFF = '/favicon-cursor-off.svg';
+    new Image().src = OFF; // preload so the first blink isn't delayed
+
+    let on = true;
+    setInterval(() => {
+        on = !on;
+        link.href = on ? ON : OFF;
+    }, 530);
+})();

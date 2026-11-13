@@ -8,7 +8,7 @@ Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step,
 
 **Everything the site serves lives in `public/`** — only that folder is deployed. Repo docs (`CLAUDE.md`, `README.md`, `TODO.md`) and `wrangler.jsonc` stay at the root and are never published.
 
-**Favicon:** `public/favicon.svg`, `public/favicon.ico` and `public/apple-touch-icon.png`, linked from the `<head>` of `public/index.html`. Their design sources and saved alternates live in `brand/favicons/` (not deployed); its README says how to regenerate the files. All site paths below are relative to `public/`.
+**Favicon:** `public/favicon.svg`, `public/favicon.ico` and `public/apple-touch-icon.png`, linked from the `<head>` of `public/index.html`. `blinkFavicon` in `scripts/global.js` makes the cursor blink by swapping the SVG icon with `public/favicon-cursor-off.svg` (skipped under reduced motion; Safari doesn't show it). Keep both SVGs identical apart from the cursor. Their design sources and saved alternates live in `brand/favicons/` (not deployed); its README says how to regenerate the files. All site paths below are relative to `public/`.
 
 ## Hosting & deployment
 
