@@ -74,10 +74,15 @@ Entry shapes:
 // projects.json: { "projects": [ ... ] }
 {
   "title": "Project name",
-  "time": "May 2025",
+  "time": "May 2025",               // metadata only — not displayed on the site
   "description": "Short description."
 }
 ```
+
+- **`"hidden": true`** on any experience or project keeps it in the JSON but skips rendering it (it's also excluded from project numbering and the count). Use it to archive entries instead of deleting them.
+- **Project numbers** (`[01]`, `[02]`, …) and the entry count are generated from array order; array order is display order, newest first.
+- Projects still carry a `time` field for record-keeping; fill it in for new entries even though it isn't shown.
+- Content is condensed from Leo's resumes in `/Users/leo/Code/leo-resumes` (`resume_v3.md` is the newest), but website wording and titles intentionally differ — don't sync blindly.
 
 Because of `fetch()` semantics, the site **must be served over HTTP** during local development (not opened via `file://`). The fetch URLs are absolute (`/projects/experiences.json`), which also requires HTTP serving.
 
@@ -106,6 +111,7 @@ Push to `main`. GitHub Pages auto-builds and serves within a minute or two. Ther
 
 ## Things to be careful about
 
+- **Queued work lives in `TODO.md`** — check it at the start of a session.
 - **Don't add a build step** without explicit user request. The whole site's simplicity depends on no toolchain.
 - **Don't introduce a framework** (React, Vue, Astro, etc.) unless explicitly asked. The vanilla-JS architecture is intentional.
 - **Don't split the page back into multiple HTML files.** The single-page anchor layout is the current design; don't recreate `projects/index.html` or `contact/index.html`.

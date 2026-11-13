@@ -1,6 +1,17 @@
 {
     "experiences": [
         {
+            "title": "Lead AI Strategist - Prime Care Medical Group",
+            "time": "May 2026 - Present",
+            "location": "Remote",
+            "descriptions": [
+                "Lead a 5-person cross-functional team (3 developers, 1 marketing lead, 1 UX/visual designer) across two new health ventures and one existing clinic under a physician-owned group, owning AI strategy, product scoping, system architecture, and vendor/BAA coordination from discovery through production.",
+                "Architecting Second Opinion Medical, a HIPAA-compliant second-opinion service (Django/DRF, React, Celery, PostgreSQL) with a vendor-agnostic AI gateway (versioned prompts, guardrails, cost logging) that sends patient records in parallel to 4 LLM platforms and assembles locked, physician-signed review packages.",
+                "Building PrimeSkin AI, a skin-health platform that puts AI skin-analysis APIs behind one gated scan pipeline (consent, cost ledger, audit trail) feeding a physician-review workflow with a concurrency-safe case state machine, NPI/sanctions checks, and BIPA biometric consent.",
+                "Rebuilt a 3-clinic aesthetics practice's WordPress site into a Next.js/Django platform with patient and staff portals, Stripe payments, and a tiered rewards program. Shipped Prima, a streaming Claude assistant with prompt caching (~90% cheaper repeat turns), tool-driven booking, and PHI redaction, backed by 1,300+ tests and a 95% coverage gate."
+            ]
+        },
+        {
             "title": "Forward Deployed Engineer - Benmore Technologies",
             "time": "October 2025 - April 2026",
             "location": "Chicago, IL",
@@ -13,7 +24,8 @@
         },
         {
             "title": "Founder & Lead Software Engineer - Local Venue Discovery App/Service",
-            "time": "January 2024 - Present",
+            "hidden": true,
+            "time": "January 2024 - October 2025",
             "location": "Chicago, IL",
             "descriptions": [
                 "Initiated, designed, and currently developing a full-stack mobile/web app connecting users to local bars and restaurants, leveraging React Native, ReactJS, Node.js, and Supabase for cross-platform functionality and real-time data syncing.", 

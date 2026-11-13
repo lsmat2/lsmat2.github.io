@@ -1,6 +1,56 @@
 {
     "projects": [
         {
+            "title": "Local Venue Discovery App",
+            "time": "January 2024 - Present",
+            "description": "Founded and lead development of a full-stack web and mobile app that connects users to local bars and restaurants, built with React.js, Node.js, Supabase, and Mapbox GL with real-time data syncing. Recruited and led a small multidisciplinary team while contributing hands-on to frontend UI/UX, backend APIs, and database schema design. Negotiated third-party data and local-business partnerships, and drove adoption through direct outreach to users and businesses."
+        },
+        {
+            "title": "Bilingual AI Legal-Aid Platform",
+            "time": "October 2025 - April 2026",
+            "description": "Engineered a bilingual (English/Spanish) AI legal-aid platform for underserved communities with a graph-traversal conversation engine that walks pre-built legal mind-maps node-by-node, cutting LLM context by ~85% compared with full-tree prompting. Designed a privacy-first architecture with zero server-side PII persistence and mandatory human review, plus a no-code React Flow admin portal so non-technical staff can edit mind-maps and petition fields. Built with Django, Next.js, PostgreSQL, OpenAI, and Clerk."
+        },
+        {
+            "title": "AI-Guided FSBO Real Estate Platform",
+            "time": "October 2025 - April 2026",
+            "description": "Built a For-Sale-By-Owner platform with an AI co-pilot that guides homeowners through state- and county-specific paperwork, contract analysis, and comparative pricing. Designed a 3-layer Unauthorized Practice of Law safeguard pipeline (input filtering, system-prompt guardrails, output validation with attorney referral and audit logging) and a multi-model AI layer that routes tasks across Claude, Perplexity, and ChatGPT by strength. Built with Django, PostgreSQL, Redis, AWS S3, Stripe, and DocuSign."
+        },
+        {
+            "title": "High-Performance Data Visualization ERP",
+            "time": "October 2025 - April 2026",
+            "description": "Owned frontend architecture for an Airtable-style virtualized table viewer over a project-based services firm's ERP, with arbitrary-depth multi-level grouping, derived columns, role-based column visibility, and CSV/XLSX export. Designed a derived-column dependency graph (Kahn's topological sort for recalculation, DFS cycle detection on edits) backing a Polars server-side formula engine with Excel-parity semantics. Built with React, TypeScript, TanStack Virtual, FastAPI, Polars, and Docker."
+        },
+        {
+            "title": "Financial Budgeting App with Cash-Flow Forecasting",
+            "time": "October 2025 - April 2026",
+            "description": "Architected a personal-finance app with matching web (PWA) and React Native mobile clients over a shared Django REST backend. It ingests bank data via Plaid and projects 3+ months of cash flow forward. Built a forecasting engine that detects recurring flows and averages sporadic spending by category, a snowball/avalanche debt eliminator, and an OCR fallback for PDF/CSV statements from banks outside Plaid's coverage."
+        },
+        {
+            "title": "K-2 Interactive Educational Platform",
+            "time": "October 2025 - April 2026",
+            "description": "Architected an adaptive learning platform for ages 3–8 with a 4-role LMS, parent dashboards with per-attempt analytics, and automatic lesson selection. Built a video interaction engine that anchors audio capture, multiple-choice, and overlay interactions to video timestamps. Shipped a COPPA-compliant consent architecture with an append-only audit log, annual re-consent, and cascade data deletion. Built with Django, PostgreSQL, Tailwind, Cloudinary, and Stripe."
+        },
+        {
+            "title": "Charitable Apparel Marketplace with QR Referral Commissions",
+            "time": "October 2025 - April 2026",
+            "description": "Built a Greek-life apparel marketplace with a Next.js storefront and Django REST API, featuring a viral QR-code referral system that passes commissions back to original buyers. Integrated two-sided payments: Stripe Checkout for consumers, and Tipalti onboarding with automated daily payouts for payees. Designed a remappable QR-ownership model and a four-tier commission rate cascade that handle returns and transfers without reprinting codes."
+        },
+        {
+            "title": "Multi-Tenant Roofing CRM & Pricing Engine",
+            "time": "October 2025 - April 2026",
+            "description": "Built a multi-tenant roofing SaaS that replaces flat-rate insurance pricing with per-contractor activity-based costing. Engineered a pricing engine that combines an empirically fit waste-factor curve, daily overhead, efficiency curves, and pitch/story premiums into dual insurance and retail budgets. Added tenant-composable custom roles and a sales-pipeline analytics layer. Built with Next.js, Django REST Framework, PostgreSQL, Clerk, and Stripe."
+        },
+        {
+            "title": "Cruise Crew Social & Management App",
+            "time": "October 2025 - April 2026",
+            "description": "Designed a mobile-first social network for cruise ship crew, built for low-bandwidth shipboard Wi-Fi, with port-based cross-ship friend matching, a shift-swap workflow, and a 3-tier forum. Built a data-ingestion pipeline that pulls ~1,500 ships and their 3-month itineraries via Apify scrapers, with monthly cron orchestration, per-ship resumability, and stale-port cleanup. Built with Django, PostgreSQL, and PyWebPush."
+        },
+        {
+            "title": "Gamified Chore Management App",
+            "time": "October 2025 - April 2026",
+            "description": "Built a cross-platform mobile app that turns household chores into XP, streaks, and mastery badges, with parent-configured reward shops and Stripe subscriptions. Designed a rule-based recurring scheduler that stores rules declaratively (e.g. \"first Friday of every month\") and drives both chore generation and allowance payouts from one engine. Built with React Native (Expo), Django REST Framework, PostgreSQL, and Firebase Cloud Messaging."
+        },
+        {
             "title": "LLM Data Extractor & CLI",
             "time": "August 2024",
             "description": "Developed a pipeline to recursively scrape websites and subpages, preprocess and clean raw HTML/text to reduce noise and optimize token usage, and leveraged LLM APIs to structure unstructured data into desired JSON formats. Designed CLI for configurable interaction supporting query, update, and integration workflows, with the option for interactivity or automation. Applied a modular design to maximize reusability, scalability, and maintainability."
@@ -21,11 +71,6 @@
             "description": "Independently developed a functional HTTP client in C supporting IPv4/IPv6 resolution, raw socket communication, and custom request/response handling. Implemented low-level POSIX system calls to gain hands-on experience with DNS, TCP, and HTTP protocols without relying on external libraries."
         },
         {
-            "title": "Full-Stack Marketplace Web Application",
-            "time": "August 2024 - October 2024",
-            "description": "Developing a full stack marketplace web application to connect buyers and sellers through an online platform, featuring user authentication and distinct components for marketplace viewing and posting. Employing Python's Flask library for backend operations with HTML templates and basic styling."
-        },
-        {
             "title": "Music Genre ML Classifier",
             "time": "April 2024",
             "description": "Leveraged machine learning methods to design different models to analyze the efficiency of music genre prediction on a large dataset of geographic, socioeconomic, and linguistic parameters. Models included Bagging & Boosting Decision Trees and K-Nearest Neighbors, with most accurate models predicting test data correctly 60% of the time. Performed data retrieval and pre-processing with a Python script and employed RStudio and specific R libraries to construct ML models then structure a final comprehensive report into HTML format."
@@ -43,7 +88,7 @@
         {
             "title": "Personal Website",
             "time": "October 2023 - Present",
-            "description": "Developed this personal website to learn HTML, CSS, and JavaScript, as well as to highlight my portfolio of projects and present my personal interests and a bio."
+            "description": "My flagship project for learning web development: started in 2023 to teach myself HTML, CSS, and JavaScript from scratch, and rebuilt as my skills grew. It is now a single-page editorial site with no framework or build step, with experience and projects rendered from JSON, scroll-triggered animations, and a navbar that tracks the section in view."
         },
         {
             "title": "Regression Analysis Programs",
@@ -62,11 +107,13 @@
         },
         {
             "title": "Multidimensional Matrix Program",
+            "hidden": true,
             "time": "January 2022",
             "description": "Created a C++ program for multidimensional matrix operations, allowing scaling, multiplication, and row reduction to echelon form for linear algebra applications."
         },
         {
             "title": "Android Application",
+            "hidden": true,
             "time": "May 2021",
             "description": "Designed an interactive map application for UIUC campus using Java, featuring clickable locations with descriptions to aid campus navigation."
         }

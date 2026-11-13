@@ -30,6 +30,7 @@ lsmat2.github.io/
 │   └── projects.json       # Project entries
 ├── images/                 # Profile photo and social icons
 ├── CLAUDE.md               # Operational notes for Claude Code working in this repo
+├── TODO.md                 # Queued work
 └── README.md
 ```
 
@@ -71,6 +72,8 @@ The renderer in `scripts/index.js` splits `title` on `" - "` into role and organ
   "description": "Short description."
 }
 ```
+
+Project `time` is kept as metadata but not displayed. Add `"hidden": true` to any experience or project to keep it in the file without showing it on the site.
 
 ## Styling
 

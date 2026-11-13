@@ -63,13 +63,12 @@ function renderProjects(list) {
     if (!ol) return;
     ol.removeAttribute('aria-busy');
     ol.innerHTML = list.map((p, i) => {
+        /* p.time stays in the JSON as metadata but isn't displayed */
         const num = String(i + 1).padStart(2, '0');
-        const time = formatTime(txt(p.time));
         return `
             <li class="proj-item reveal" tabindex="0">
                 <span class="proj-num">[${num}]</span>
                 <h3 class="proj-title">${escapeHTML(txt(p.title))}</h3>
-                <span class="proj-time">${escapeHTML(time)}</span>
                 <p class="proj-desc">${escapeHTML(txt(p.description))}</p>
             </li>
         `;
@@ -117,8 +116,10 @@ async function fetchJSON(url) {
             fetchJSON(EXPERIENCES_URL),
             fetchJSON(PROJECTS_URL)
         ]);
-        renderExperiences(exp.experiences || []);
-        renderProjects(proj.projects || []);
+        /* Entries with "hidden": true stay in the JSON but aren't rendered */
+        const visible = (list) => (list || []).filter(item => !item.hidden);
+        renderExperiences(visible(exp.experiences));
+        renderProjects(visible(proj.projects));
     } catch (err) {
         console.error('[content] failed to load JSON:', err);
         const ol = document.getElementById('experienceList');
