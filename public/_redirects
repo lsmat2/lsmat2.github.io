@@ -1,0 +1,5 @@
+# Old multi-page URLs -> sections of the one-page site
+/projects   /#projects  301
+/projects/  /#projects  301
+/contact    /#contact   301
+/contact/   /#contact   301

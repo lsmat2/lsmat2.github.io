@@ -4,20 +4,27 @@ Operational guide for Claude Code working in this repo. Read this before suggest
 
 ## Project type
 
-Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step, no framework, no package.json, no node_modules.** A single `index.html` at the repo root with anchor-scrolling sections (Hero / About / Experience / Projects / Contact) and a fixed scroll-spy navbar. Hosted on GitHub Pages at `lsmat2.github.io`.
+Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step, no framework, no package.json, no node_modules.** A single `public/index.html` with anchor-scrolling sections (Hero / About / Experience / Projects / Contact) and a fixed scroll-spy navbar. Hosted on Cloudflare (Workers static assets) at `lsmat.com`; see **Hosting & deployment**.
 
-## Hosting: GitHub Pages — hard constraints
+**Everything the site serves lives in `public/`** — only that folder is deployed. Repo docs (`CLAUDE.md`, `README.md`, `TODO.md`) and `wrangler.jsonc` stay at the root and are never published. All site paths below are relative to `public/`.
 
-The repo is named `lsmat2.github.io` (the username.github.io convention), so GitHub Pages serves it as the user root site. Auto-deploys on push to `main`.
+## Hosting & deployment
+
+- **Host:** Cloudflare Workers with static assets — a Worker with no script that serves the files in `public/`. Config lives in `wrangler.jsonc` at the repo root (`name` must match the Worker's name in the Cloudflare dashboard, `assets.directory` is `./public`).
+- **Deploys:** Cloudflare's Git integration (Workers Builds) is connected to this GitHub repo. Every push to `main` runs `npx wrangler deploy` on Cloudflare's side and goes live within a minute or so. Pushes to other branches create preview URLs (listed under the Worker's **Previews** in the dashboard). Nothing is installed or built locally.
+- **Redirects:** `public/_redirects` maps the old multi-page URLs (`/projects`, `/contact`, with and without trailing slash) to their sections with 301s. Rules match exact paths only. They are not applied by the local Python server — test them on a preview or the live site.
+- **GitHub Pages:** no longer serves this site from `main`. It publishes the `gh-pages` branch, which is kept separate from the site source.
+
+### Hard constraints
 
 **Things that CANNOT exist on this site — do not propose, scaffold, or implement them:**
 
 - **No server-side code.** No Node servers, no Python backends, no PHP, no anything that runs on a server.
-- **No serverless functions / API routes.** GitHub Pages has no equivalent of Vercel/Netlify Functions. There is nowhere for `/api/*` to run.
+- **No serverless functions / API routes.** The Worker has no script. Adding one is possible on Cloudflare but is an architecture change — don't do it without explicit user request.
 - **No environment variables or secrets.** The repo is public; anything committed is public. Never embed API keys, tokens, or credentials, even in JS files. If a feature needs a secret, it cannot be implemented here.
-- **No request-time rewrites, redirects, or middleware.** No equivalent of `vercel.json`, `_redirects`, or `next.config.js`. Only client-side navigation and static file serving.
+- **No middleware or request-time logic.** Static path redirects belong in `public/_redirects` and response headers in `public/_headers`; anything beyond that would need a Worker script (see above).
 - **No SSR / ISR / streaming / edge logic.** Everything renders client-side from static HTML/CSS/JS.
-- **No image optimization pipeline.** Images are served as-is from `/images/`.
+- **No image optimization pipeline.** Images are served as-is from `public/images/`.
 - **No private data, no auth, no databases.**
 
 **Acceptable patterns for "dynamic" features:**
@@ -32,7 +39,7 @@ If the user asks for a feature that genuinely requires a backend (e.g., "process
 
 ### Single-page structure
 
-The whole site is one `index.html` at the repo root. Sections (`#about`, `#experience`, `#projects`, `#contact`) are anchor targets in the same document; the navbar links use `#hash` hrefs. There are no other HTML files — don't add `projects/index.html` or `contact/index.html` back. The `projects/` directory exists only as a content store (two JSON files) and is not a route.
+The whole site is one `public/index.html`. Sections (`#about`, `#experience`, `#projects`, `#contact`) are anchor targets in the same document; the navbar links use `#hash` hrefs. There are no other HTML files — don't add `projects/index.html` or `contact/index.html` back. The `projects/` directory exists only as a content store (two JSON files) and is not a route.
 
 ### Scroll-spy navbar, not active-page classes
 
@@ -93,16 +100,12 @@ Elements with the `.reveal` class fade/slide in when they enter the viewport. Th
 ## Local development
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000 -d public
 ```
 
-Run from the repo root. Open `http://localhost:8000`. No watch mode / hot reload — refresh the browser after edits. The Python server reads files fresh per request, so no restart needed for content changes.
+Run from the repo root (`-d public` serves the site folder). Open `http://localhost:8000`. No watch mode / hot reload — refresh the browser after edits. The Python server reads files fresh per request, so no restart needed for content changes.
 
 If a port-bind fails, another process is on 8000 — pick a different port. Avoid suggesting `npx serve`, Vite, or other tools as a default; they require Node and add complexity this project doesn't need.
-
-## Deployment
-
-Push to `main`. GitHub Pages auto-builds and serves within a minute or two. There is no preview environment or per-PR deploy — the only "preview" is local.
 
 ## Commit conventions
 
@@ -115,6 +118,7 @@ Push to `main`. GitHub Pages auto-builds and serves within a minute or two. Ther
 - **Don't add a build step** without explicit user request. The whole site's simplicity depends on no toolchain.
 - **Don't introduce a framework** (React, Vue, Astro, etc.) unless explicitly asked. The vanilla-JS architecture is intentional.
 - **Don't split the page back into multiple HTML files.** The single-page anchor layout is the current design; don't recreate `projects/index.html` or `contact/index.html`.
-- **Don't propose Vercel/Netlify-specific features** while the site is on GitHub Pages. The user has a Vercel account and is considering switching, but until they do, those features don't exist here.
+- **Don't propose Vercel/Netlify-specific features.** The site is on Cloudflare; Vercel was considered and ruled out.
 - **Don't add tracking, analytics, or third-party embeds** without asking — the site is currently dependency-free aside from the Fontshare and Google Fonts CSS imports.
-- **Don't rename `projects/`** — the path is hardcoded in `scripts/index.js` as `/projects/experiences.json` and `/projects/projects.json`.
+- **Don't rename `public/projects/`** — the path is hardcoded in `scripts/index.js` as `/projects/experiences.json` and `/projects/projects.json`, and `_redirects` only redirects the exact paths `/projects` and `/projects/`.
+- **New site files go in `public/`.** Anything outside it is not deployed.

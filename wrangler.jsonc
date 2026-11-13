@@ -1,0 +1,9 @@
+// Cloudflare Workers (static assets only — no Worker script).
+// Cloudflare's build runs `npx wrangler deploy` on every push to main.
+{
+  "name": "lsmat-site",
+  "compatibility_date": "2026-11-12",
+  "assets": {
+    "directory": "./public"
+  }
+}

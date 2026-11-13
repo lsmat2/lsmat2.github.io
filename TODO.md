@@ -2,10 +2,11 @@
 
 In order of priority.
 
-## 1. Move the site to the Cloudflare domain (in progress)
-- A domain for this site has been bought on Cloudflare. Serve the site there.
-- Hosting is being decided between Cloudflare Pages connected to this repo, and GitHub Pages behind the new domain. Vercel was ruled out.
-- Afterwards: update the hosting sections of `CLAUDE.md` and `README.md`, the site links in the resume headers (`lsmat2.github.io/`), and decide whether `lsmat2.github.io` should redirect to the new domain.
+## 1. Move the site to lsmat.com on Cloudflare (in progress)
+- Hosting: Cloudflare Workers static assets, deployed from `main` via Workers Builds. `lsmat.com` is the main address; `www` redirects to it.
+- Done: GitHub Pages now publishes the `gh-pages` branch; site moved into `public/`; `wrangler.jsonc` and `public/_redirects` added.
+- Next: connect the repo in the Cloudflare dashboard and check the workers.dev URL; add `lsmat.com` as a custom domain plus the www → root redirect rule; replace `gh-pages` with a forwarding page to lsmat.com.
+- Afterwards: Leo updates the site link on resumes and LinkedIn.
 
 ## 2. Rewrite the About section
 - The hero intro and About copy in `index.html` are hardcoded, not JSON-driven.
