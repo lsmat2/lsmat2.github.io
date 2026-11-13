@@ -10,10 +10,14 @@ Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step,
 
 ## Hosting & deployment
 
-- **Host:** Cloudflare Workers with static assets — a Worker with no script that serves the files in `public/`. Config lives in `wrangler.jsonc` at the repo root (`name` must match the Worker's name in the Cloudflare dashboard, `assets.directory` is `./public`).
+- **Host:** Cloudflare Workers with static assets — a Worker named `lsmat-site` with no script, serving the files in `public/`. Config lives in `wrangler.jsonc` at the repo root; `name` must match the Worker's name in the Cloudflare dashboard.
+- **Domains:** `lsmat.com` is the canonical address. `lsmat.com` and `www.lsmat.com` are attached as custom domains in `wrangler.jsonc` (`routes`), so Cloudflare manages their DNS records and certificates — don't add DNS records for them by hand. The `workers.dev` URL (`lsmat-site.leosmat663.workers.dev`) stays enabled because branch preview URLs depend on it.
 - **Deploys:** Cloudflare's Git integration (Workers Builds) is connected to this GitHub repo. Every push to `main` runs `npx wrangler deploy` on Cloudflare's side and goes live within a minute or so. Pushes to other branches create preview URLs (listed under the Worker's **Previews** in the dashboard). Nothing is installed or built locally.
-- **Redirects:** `public/_redirects` maps the old multi-page URLs (`/projects`, `/contact`, with and without trailing slash) to their sections with 301s. Rules match exact paths only. They are not applied by the local Python server — test them on a preview or the live site.
-- **GitHub Pages:** no longer serves this site from `main`. It publishes the `gh-pages` branch, which is kept separate from the site source.
+- **Redirects:**
+  - `public/_redirects` (in the repo) maps the old multi-page URLs (`/projects`, `/contact`, with and without trailing slash) to their sections with 301s. Rules match exact paths only. They are not applied by the local Python server — test them on a preview or the live site.
+  - In the Cloudflare dashboard (zone `lsmat.com`, **not** in the repo): a Redirect Rule sends `www.lsmat.com/*` to `https://lsmat.com/*` with a 301, preserving the query string, and **Always Use HTTPS** is on.
+- **Old address:** GitHub Pages publishes the `gh-pages` branch, which holds only a forwarding page: any `lsmat2.github.io/...` URL is sent to the same path on `lsmat.com`. Never merge `gh-pages` and `main` into each other.
+- **Cloudflare access from Claude Code:** the Cloudflare MCP server (`https://mcp.cloudflare.com/mcp`) is configured for this project. Use it to check builds, DNS, and zone settings; ask before changing anything.
 
 ### Hard constraints
 
