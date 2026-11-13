@@ -6,7 +6,9 @@ Operational guide for Claude Code working in this repo. Read this before suggest
 
 Static personal portfolio site — plain HTML, CSS, vanilla JS. **No build step, no framework, no package.json, no node_modules.** A single `public/index.html` with anchor-scrolling sections (Hero / About / Experience / Projects / Contact) and a fixed scroll-spy navbar. Hosted on Cloudflare (Workers static assets) at `lsmat.com`; see **Hosting & deployment**.
 
-**Everything the site serves lives in `public/`** — only that folder is deployed. Repo docs (`CLAUDE.md`, `README.md`, `TODO.md`) and `wrangler.jsonc` stay at the root and are never published. All site paths below are relative to `public/`.
+**Everything the site serves lives in `public/`** — only that folder is deployed. Repo docs (`CLAUDE.md`, `README.md`, `TODO.md`) and `wrangler.jsonc` stay at the root and are never published.
+
+**Favicon:** `public/favicon.svg`, `public/favicon.ico` and `public/apple-touch-icon.png`, linked from the `<head>` of `public/index.html`. Their design sources and saved alternates live in `brand/favicons/` (not deployed); its README says how to regenerate the files. All site paths below are relative to `public/`.
 
 ## Hosting & deployment
 

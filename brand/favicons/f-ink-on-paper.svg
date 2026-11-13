@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Design source: uses live text (designed for Erode 600; previewed in Fraunces). Convert the text to shapes before deploying. -->
+  <rect width="64" height="64" rx="14" fill="#efe9dc"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Erode, Fraunces, Georgia, serif" font-weight="600" font-size="31" letter-spacing="-1" fill="#0c0b09">LS</text>
+  <rect x="16" y="47" width="32" height="4" rx="2" fill="#ff6b35"/>
+</svg>

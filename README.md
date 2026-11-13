@@ -20,6 +20,7 @@ lsmat2.github.io/
 ├── public/                     # Everything the site serves (the only folder deployed)
 │   ├── index.html              # Single-page site: hero + About / Experience / Projects / Contact
 │   ├── _redirects              # Cloudflare redirects for old URLs
+│   ├── favicon.svg, favicon.ico, apple-touch-icon.png  # Site icons
 │   ├── styles/
 │   │   ├── themes.css          # CSS custom properties — palette, type scale, fonts, spacing, motion
 │   │   ├── global.css          # Shared layout: navbar, shell container, footer, reveal animation
@@ -31,6 +32,7 @@ lsmat2.github.io/
 │   │   ├── experiences.json    # Work history entries
 │   │   └── projects.json       # Project entries
 │   └── images/                 # Profile photo and social icons
+├── brand/favicons/             # Favicon design sources and alternates (not deployed)
 ├── wrangler.jsonc              # Cloudflare deploy config
 ├── CLAUDE.md                   # Operational notes for Claude Code working in this repo
 ├── TODO.md                     # Queued work
